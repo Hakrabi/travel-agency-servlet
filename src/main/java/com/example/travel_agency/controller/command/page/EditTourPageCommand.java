@@ -1,0 +1,22 @@
+package com.example.travel_agency.controller.command.page;
+
+import com.example.travel_agency.controller.Path;
+import com.example.travel_agency.controller.command.ICommand;
+import com.example.travel_agency.model.database.dao.ITourDao;
+import com.example.travel_agency.model.database.dao.factory.IDaoFactory;
+import com.example.travel_agency.model.database.dao.factory.JdbcDaoFactory;
+import com.example.travel_agency.model.entity.Tour;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
+public class EditTourPageCommand implements ICommand {
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+
+
+
+        return Path.PAGE_EDIT_TOUR;
+    }
+}
