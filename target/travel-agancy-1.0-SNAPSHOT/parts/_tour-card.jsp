@@ -16,7 +16,7 @@
 
             <div class="uk-cover-container">
                 <canvas width="400" height="250"></canvas>
-                <img src="img/${requestScope.tour.imgUrl}"  alt="" uk-cover>
+                <img src="${pageContext.request.contextPath}/img/${requestScope.tour.imgUrl}"  alt="" uk-cover>
             </div>
 
         </div>

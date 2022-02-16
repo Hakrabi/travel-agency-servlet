@@ -40,8 +40,7 @@ public class Controller extends HttpServlet {
 //        path = req.getMethod() + ':' + path;
 //        Command command = commands.getOrDefault(path, (r) -> Pages.ERROR_404_PAGE);
 //        return command.execute(req);
-
-
+        System.out.println(resp.getStatus());
 
         if (page.startsWith(Path.REDIRECT)) {
             resp.sendRedirect(page.replaceAll(Path.REDIRECT, ""));

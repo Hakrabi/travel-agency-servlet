@@ -3,32 +3,33 @@
 
 <ul class="uk-pagination" uk-margin>
 
-    <c:forEach items="${tourList}" var="tour" varStatus="status">
-        <tr>
-            <td>${tour.id}</td>
-            <td><a href="${pageContext.request.contextPath}/tour?id=${tour.id}">${tour.name}</a></td>
-            <td>
-                <a  class="uk-button uk-button-default"
-                    href="${pageContext.request.contextPath}/edit-tour?id=${tour.id}">
-                    Edit Tour
-                </a>
-            </td>
+    <c:choose>
+        <c:when test="${page - 1 > 0}">
+            <li><a href="${pageContext.request.contextPath}/tour?page=${page-1}"><span uk-pagination-previous></span></a></li>
+        </c:when>
+        <c:otherwise>
+            <li><span uk-pagination-previous></span></li>
+        </c:otherwise>
+    </c:choose>
 
-        </tr>
+    <c:forEach var="p" begin="${minPossiblePage}" end="${maxPossiblePage}">
+        <c:choose>
+            <c:when test="${page == p}">
+                <li class="uk-active"><span>${p}</span></li>
+            </c:when>
+            <c:otherwise>
+                <li><a href="page?page=${p}">${p}</a></li>
+            </c:otherwise>
+        </c:choose>
     </c:forEach>
 
+    <c:choose>
+        <c:when test="${page + 1 <= pageCount}">
+            <li><a href="${pageContext.request.requestUri}/?page=${page+1}"><span uk-pagination-next></span></a></li>
+        </c:when>
+        <c:otherwise>
+            <li><span uk-pagination-next></span></li>
+        </c:otherwise>
+    </c:choose>
 
-    <li><a href="#"><span uk-pagination-previous></span></a></li>
-    <li><a href="#">1</a></li>
-    <li class="uk-disabled"><span>...</span></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">6</a></li>
-    <li class="uk-active"><span>7</span></li>
-    <li><a href="#">8</a></li>
-    <li><a href="#">9</a></li>
-    <li><a href="#">10</a></li>
-    <li class="uk-disabled"><span>...</span></li>
-    <li><a href="#">20</a></li>
-    <li><a href="#"><span uk-pagination-next></span></a></li>
 </ul>

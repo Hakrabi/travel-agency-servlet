@@ -57,4 +57,14 @@ public class UserDao implements IUserDao {
 
         return userList;
     }
+
+    @Override
+    public List<User> findAllByPage(Integer page, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public Integer getSize() {
+        return null;
+    }
 }

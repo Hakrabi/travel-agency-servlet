@@ -30,4 +30,14 @@ public class ReceiptDao implements IReceiptDao {
     public List<Receipt> findAll() {
         return null;
     }
+
+    @Override
+    public List<Receipt> findAllByPage(Integer page, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public Integer getSize() {
+        return null;
+    }
 }

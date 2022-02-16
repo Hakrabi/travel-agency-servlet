@@ -10,7 +10,7 @@ public interface IDao<T, PK extends Serializable> {
     void delete(PK id);
     List<T> findAll();
 
-    List<T> findAllByPage(Integer page);
+    List<T> findAllByPage(Integer page, Integer limit);
     Integer getSize();
 
 

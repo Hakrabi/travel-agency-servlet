@@ -13,19 +13,15 @@ public class TourDao implements ITourDao {
     @Override
     public Long create(Tour tour) {
         Long id = null;
-        try {
-            id = QueryExecutor.insert(Queries.Tour.INSERT,
-                    tour.getName(),
-                    tour.getDescription(),
-                    tour.getPrice(),
-                    tour.getPersons(),
-                    tour.getTour_type_id(),
-                    tour.getHotel_type_id(),
-                    tour.getHot(),
-                    tour.getImgUrl());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        id = QueryExecutor.insert(Queries.Tour.INSERT,
+                tour.getName(),
+                tour.getDescription(),
+                tour.getPrice(),
+                tour.getPersons(),
+                tour.getTour_type_id(),
+                tour.getHotel_type_id(),
+                tour.getHot(),
+                tour.getImgUrl());
 
         return id;
     }
@@ -63,5 +59,29 @@ public class TourDao implements ITourDao {
         }
 
         return tourList;
+    }
+
+    @Override
+    public List<Tour> findAllByPage(Integer page, Integer limit) {
+        List<Tour> tourList = null;
+        try {
+            tourList = QueryExecutor.getObjects(Queries.Tour.SELECT_ALL_BY_PAGE, EntityBuilderFactory.getTourBuilder(), limit,  page);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return tourList;
+    }
+
+    @Override
+    public Integer getSize() {
+        Integer size = 0;
+        try {
+            size = QueryExecutor.getSize(Queries.Tour.SIZE);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return size;
     }
 }

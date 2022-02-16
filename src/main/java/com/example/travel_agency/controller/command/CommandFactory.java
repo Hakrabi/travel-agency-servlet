@@ -55,12 +55,7 @@ public class CommandFactory {
 //        path = request.getMethod() + ':' + path;
 
         System.out.println(path);
+//        return commands.get(path);
         return commands.getOrDefault(path, (req,resp) -> Path.PAGE_ERROR_404);
-
-
-
-//        String action = request.getParameter("action");
-//        System.out.println(action);
-//        return commands.get(action);
     }
 }

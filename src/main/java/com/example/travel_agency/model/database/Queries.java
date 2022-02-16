@@ -13,6 +13,9 @@ public class Queries{
         public static final String INSERT       = "INSERT INTO tour VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, default);";
         public static final String SELECT_ALL   = "SELECT * FROM tour ORDER BY hot DESC";
         public static final String SELECT_BY_ID = "SELECT * FROM tour WHERE id = ?";
+        public static final String SELECT_ALL_BY_PAGE = "SELECT * FROM tour ORDER BY hot DESC LIMIT ? OFFSET ?";
+        public static final String SIZE         = "SELECT COUNT(*) FROM tour";
+
         public static final String DELETE       = "DELETE FROM teams WHERE name = ?";
         public static final String SELECT_ONE   = "SELECT * FROM teams WHERE name = ?";
         public static final String UPDATE       = "UPDATE teams SET name = ? WHERE id = ?";
