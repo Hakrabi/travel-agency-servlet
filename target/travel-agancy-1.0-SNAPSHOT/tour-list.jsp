@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<c:set var="title" value="Users" scope="page"/>
+<c:set var="title" value="Users" scope="request"/>
 <jsp:include page="/parts/_head.jsp"/>
 
 <body>
@@ -27,10 +27,10 @@
             <c:forEach items="${tourList}" var="tour" varStatus="status">
                 <tr>
                     <td>${tour.id}</td>
-                    <td><a href="${pageContext.request.contextPath}?action=singleTour&tourId=${tour.id}">${tour.name}</a></td>
+                    <td><a href="${pageContext.request.contextPath}/tour?id=${tour.id}">${tour.name}</a></td>
                     <td>
                         <a  class="uk-button uk-button-default"
-                            href="${pageContext.request.contextPath}?action=editTourPage&tourId=${tour.id}">
+                            href="${pageContext.request.contextPath}/edit-tour?id=${tour.id}">
                             Edit Tour
                         </a>
                     </td>

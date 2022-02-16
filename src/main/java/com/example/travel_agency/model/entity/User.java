@@ -3,7 +3,7 @@ package com.example.travel_agency.model.entity;
 import java.util.Date;
 
 public class User extends Entity{
-    private String email;
+    private String login;
     private String password;
     private String name;
     private Date create_time;
@@ -13,12 +13,12 @@ public class User extends Entity{
 
 
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

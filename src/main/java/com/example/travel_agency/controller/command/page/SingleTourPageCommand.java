@@ -17,9 +17,9 @@ public class SingleTourPageCommand implements ICommand {
         IDaoFactory factory = new JdbcDaoFactory();
         ITourDao tourDao = factory.getTourDao();
 
-        String tourId = request.getParameter("tourId");
+        String id = request.getParameter("id");
 
-        Tour tour = tourDao.read(Long.parseLong(tourId));
+        Tour tour = tourDao.read(Long.parseLong(id));
         request.setAttribute("tour", tour);
 
         return Path.PAGE_SINGLE_TOUR;

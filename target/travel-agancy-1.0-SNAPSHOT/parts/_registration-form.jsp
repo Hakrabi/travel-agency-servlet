@@ -26,6 +26,6 @@
     </div>
 
     <div class="uk-text-small uk-text-center">
-        Already have an account? <a href="${pageContext.request.contextPath}?action=login" >Sign In</a>
+        Already have an account? <a href="${pageContext.request.contextPath}/login" >Sign In</a>
     </div>
 </form>

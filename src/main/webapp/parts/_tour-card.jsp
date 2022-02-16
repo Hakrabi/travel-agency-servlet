@@ -14,7 +14,11 @@
                 <div class="uk-card-badge uk-label">Палаючий</div>
             </c:if>
 
-            <img data-src="img/${requestScope.tour.imgUrl}" width="100%" height="80%" alt="" uk-img>
+            <div class="uk-cover-container">
+                <canvas width="400" height="250"></canvas>
+                <img src="img/${requestScope.tour.imgUrl}"  alt="" uk-cover>
+            </div>
+
         </div>
         <div class="uk-card-body uk-card-small">
 

@@ -12,8 +12,17 @@ import java.util.List;
 public class TourDao implements ITourDao {
     @Override
     public Long create(Tour tour) {
+        Long id = null;
         try {
-            Long id = QueryExecutor.insert(Queries.Tour.INSERT, EntityBuilderFactory.getTourBuilder());
+            id = QueryExecutor.insert(Queries.Tour.INSERT,
+                    tour.getName(),
+                    tour.getDescription(),
+                    tour.getPrice(),
+                    tour.getPersons(),
+                    tour.getTour_type_id(),
+                    tour.getHotel_type_id(),
+                    tour.getHot(),
+                    tour.getImgUrl());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<c:set var="title" value="Users" scope="page"/>
+<c:set var="title" value="Users" scope="request"/>
 <jsp:include page="/parts/_head.jsp"/>
 
 <body>
@@ -19,7 +19,8 @@
             <tr>
                 <th class="uk-width-small">ID</th>
                 <th>Role</th>
-                <th>Email</th>
+                <th>Login</th>
+                <th>Name</th>
                 <th>Table Heading</th>
             </tr>
             </thead>
@@ -29,8 +30,9 @@
                 <tr>
                     <td>${user.id}</td>
                     <td>${user.user_role_id}</td>
-                    <td>${user.email}</td>
-                    <td><button class="uk-button uk-button-default" type="button">Button</button></td>
+                    <td>${user.login}</td>
+                    <td>${user.name}</td>
+                    <td><button class="uk-button uk-button-default" type="button">Block</button></td>
                 </tr>
             </c:forEach>
 

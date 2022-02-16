@@ -1,5 +1,6 @@
 package com.example.travel_agency.controller.command.common;
 
+import com.example.travel_agency.controller.Path;
 import com.example.travel_agency.controller.command.ICommand;
 import com.example.travel_agency.model.database.dao.ITourDao;
 import com.example.travel_agency.model.database.dao.factory.IDaoFactory;
@@ -21,7 +22,8 @@ public class AddTourCommand implements ICommand {
 
         Tour tour = EntityBuilderFactory.getTourBuilder().build(request);
 
-        Tour tour = tourDao.read(Long.parseLong(tourId));
-        request.setAttribute("tour", tour);
+        Long id = tourDao.create(tour);
+
+        return Path.REDIRECT + Path.SINGLE_TOUR  + "?tourId=" + id;
     }
 }

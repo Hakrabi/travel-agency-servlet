@@ -9,4 +9,9 @@ public interface IDao<T, PK extends Serializable> {
     void update(T t);
     void delete(PK id);
     List<T> findAll();
+
+    List<T> findAllByPage(Integer page);
+    Integer getSize();
+
+
 }

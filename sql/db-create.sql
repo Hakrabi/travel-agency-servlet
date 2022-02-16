@@ -199,3 +199,7 @@ INSERT INTO tour VALUES(3,  'Bali relax', 'Chill out on a tropical island', 900.
 INSERT INTO tour VALUES(4,  'New York shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default);
 INSERT INTO tour VALUES(5,  'Delhi artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default);
 INSERT INTO tour VALUES(6,  'Austria ski resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default);
+
+
+
+INSERT INTO tour VALUES(default,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default);

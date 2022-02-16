@@ -16,9 +16,11 @@ public class EditTourCommand implements ICommand {
         IDaoFactory factory = new JdbcDaoFactory();
         ITourDao tourDao = factory.getTourDao();
 
-        String tourId = request.getParameter("tourId");
+        String tourId = request.getParameter("id");
 
         Tour tour = tourDao.read(Long.parseLong(tourId));
         request.setAttribute("tour", tour);
+
+        return "";
     }
 }

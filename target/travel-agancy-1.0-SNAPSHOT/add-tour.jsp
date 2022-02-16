@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<c:set var="title" value="Add Tour" scope="page"/>
+<c:set var="title" value="Add Tour" scope="request"/>
 <jsp:include page="/parts/_head.jsp"/>
 
 <body>

@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<c:set var="title" value="${tour.name}" scope="page"/>
+<c:set var="title" value="${tour.name}" scope="request"/>
 <jsp:include page="/parts/_head.jsp"/>
 
 <body>
@@ -16,9 +16,9 @@
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
                 <div class="uk-width-1-1@m">
-<%--                    <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">--%>
+                    <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
                         <jsp:include page="/parts/_tour-card.jsp"/>
-<%--                    </div>--%>
+                    </div>
                 </div>
             </div>
         </div>

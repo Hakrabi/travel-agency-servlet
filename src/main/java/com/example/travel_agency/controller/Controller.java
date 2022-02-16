@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 //@WebServlet("/")
 public class Controller extends HttpServlet {
@@ -25,15 +26,27 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        System.out.println(req.getRequestURI());
-        System.out.println(req.getPathInfo());
-
         CommandFactory commandFactory = CommandFactory.commandFactory();
-        ICommand ic = commandFactory.getCommand(req);
-        String page = ic.execute(req, resp);
-        RequestDispatcher dispatcher = req.getRequestDispatcher(page);
-        if (!page.equals("redirect")) {
-            dispatcher.forward(req, resp);
+        ICommand command = commandFactory.getCommand(req);
+
+        String page = null;
+        try {
+            page = command.execute(req, resp);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+//        String path = req.getRequestURI();
+//        path = req.getMethod() + ':' + path;
+//        Command command = commands.getOrDefault(path, (r) -> Pages.ERROR_404_PAGE);
+//        return command.execute(req);
+
+
+
+        if (page.startsWith(Path.REDIRECT)) {
+            resp.sendRedirect(page.replaceAll(Path.REDIRECT, ""));
+        } else {
+            req.getRequestDispatcher(page).forward(req, resp);
         }
     }
 }

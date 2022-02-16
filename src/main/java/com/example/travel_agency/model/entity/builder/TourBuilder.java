@@ -30,15 +30,25 @@ public class TourBuilder implements IEntityBuilder<Tour>{
     public Tour build(HttpServletRequest req) throws SQLException {
         Tour tour = new Tour();
 
-        tour.setId(Long.valueOf(req.getParameter("id")));
-        tour.setName(req.getParameter("name"));
-        tour.setDescription(req.getParameter("description"));
-        tour.setPrice(BigDecimal.valueOf(Long.parseLong(req.getParameter("price"))));
-        tour.setPersons(Short.valueOf(req.getParameter("persons")));
-        tour.setTour_type_id(Short.valueOf(req.getParameter("tour_type_id")));
-        tour.setHotel_type_id(Short.valueOf(req.getParameter("hotel_type_id")));
-        tour.setHot(Boolean.valueOf(req.getParameter("hot")));
-        tour.setImgUrl(req.getParameter("img_url"));
+        String name          = req.getParameter("name");
+        String description   = req.getParameter("description");
+        BigDecimal price     = BigDecimal.valueOf(Long.parseLong(req.getParameter("price")));
+        Short persons        = Short.valueOf(req.getParameter("persons"));
+        Short tour_type_id   = Short.valueOf(req.getParameter("tour_type"));
+        Short hotel_type_id  = Short.valueOf(req.getParameter("hotel_type"));
+//        Boolean hot          = Boolean.valueOf(req.getParameter("hot"));
+//        String imgUrl        = req.getParameter("img_url");
+        Boolean hot          = true;
+        String imgUrl        = "url";
+
+        tour.setName(name);
+        tour.setDescription(description);
+        tour.setPrice(price);
+        tour.setPersons(persons);
+        tour.setTour_type_id(tour_type_id);
+        tour.setHotel_type_id(hotel_type_id);
+        tour.setHot(hot);
+        tour.setImgUrl(imgUrl);
 
         return tour;
 

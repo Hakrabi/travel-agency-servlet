@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <h3 class="uk-card-title uk-text-center">Edit Tour</h3>
-<form action="${pageContext.request.contextPath}?action=editTour" method="POST">
+<form action="${pageContext.request.contextPath}/edit-tour-action" method="POST">
 
     <div class="uk-margin">
         <input class="uk-input uk-form-large" type="text" placeholder="Name" name="name" value="${tour.name}">
@@ -30,7 +30,7 @@
                     <option value="2">Vacation</option>
                     <option value="3">Shopping</option>
                 </select>
-                <button class="uk-button uk-button-large" type="button" tabindex="-1">
+                <button class="uk-button uk-button-medium" type="button" tabindex="-1">
                     <span></span>
                     <span uk-icon="icon: chevron-down"></span>
                 </button>
@@ -45,7 +45,7 @@
                     <option value="4">★★★★</option>
                     <option value="5">★★★★★</option>
                 </select>
-                <button class="uk-button uk-button-large" type="button" tabindex="-1">
+                <button class="uk-button uk-button-medium" type="button" tabindex="-1">
                     <span></span>
                     <span uk-icon="icon: chevron-down"></span>
                 </button>

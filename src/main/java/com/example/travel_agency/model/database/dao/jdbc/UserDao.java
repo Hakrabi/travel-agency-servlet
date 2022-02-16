@@ -23,6 +23,18 @@ public class UserDao implements IUserDao {
     }
 
     @Override
+    public User read(String login) {
+        User user = null;
+        try {
+            user = QueryExecutor.getObject(Queries.User.SELECT_BY_LOGIN, EntityBuilderFactory.getUserBuilder(), login);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return user;
+    }
+
+    @Override
     public void update(User user) {
 
     }
@@ -31,6 +43,7 @@ public class UserDao implements IUserDao {
     public void delete(Long id) {
 
     }
+
 
     @Override
     public List<User> findAll() {

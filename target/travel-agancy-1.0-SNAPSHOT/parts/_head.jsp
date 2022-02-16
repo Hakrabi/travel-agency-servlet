@@ -2,7 +2,7 @@
 
 
 <head>
-    <title> ${pageScope.title}</title>
+    <title> ${requestScope.title}</title>
     <link rel="icon" href="/favicon.png" sizes="32x32"/>
     <link rel='stylesheet' id='uikit-css' href='css/uikit.min.css' type='text/css' media='all'/>
 

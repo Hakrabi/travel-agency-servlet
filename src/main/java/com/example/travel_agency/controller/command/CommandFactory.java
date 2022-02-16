@@ -1,7 +1,10 @@
 package com.example.travel_agency.controller.command;
 
+import com.example.travel_agency.controller.Path;
+import com.example.travel_agency.controller.command.common.AddTourCommand;
 import com.example.travel_agency.controller.command.common.EditTourCommand;
 import com.example.travel_agency.controller.command.common.LoginCommand;
+import com.example.travel_agency.controller.command.common.LogoutCommand;
 import com.example.travel_agency.controller.command.page.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,41 +27,40 @@ public class CommandFactory {
     }
 
     static {
-//    // common commands
-        commands.put("tours", new ToursMainPageCommand());
-        commands.put("userList", new UserListPageCommand());
-        commands.put("tourList", new TourListPageCommand());
-//    commands.put("pdf_builder", new PdfBuilderCommand());
-//    commands.put("no_command", new NoCommand());
-//    commands.put("i18n", new I18NCommand());
-//    commands.put("redirect", null);
-//
-//    // admin commands
-//    commands.put("main", new MainCommand());
-//    commands.put("users", new ShowUserListCommand());
-//    commands.put("services", new EditServicesCommand());
-        commands.put("registration", new RegistrationPageCommand());
-        commands.put("loginPage", new LoginPageCommand());
-        commands.put("login", new LoginCommand());
-        commands.put("editTourPage", new EditTourPageCommand());
-        commands.put("editTour", new EditTourCommand());
-        commands.put("singleTour", new SingleTourPageCommand());
-//    commands.put("profile", new ProfileCommand());
-//    commands.put("add_tariff", new AddTariffCommand());
-//    commands.put("edit_tariff", new EditTariffCommand());
-//    commands.put("remove_tariff", new RemoveTariffCommand());
-//
-//    // client commands
-//    commands.put("account", new AccountCommand());
-//    commands.put("personal_data", new PersonalDataCommand());
-//    commands.put("user_profile", new UserProfileCommand());
-//    commands.put("transactions", new TransactionCommand());
-//    commands.put("save_profile", new SaveUserProfileCommand());
+        //pages
+        commands.put(Path.HOME, new ToursMainPageCommand());
+        commands.put(Path.REGISTRATION, new RegistrationPageCommand());
+        commands.put(Path.SINGLE_TOUR, new SingleTourPageCommand());
+        commands.put(Path.LOGIN, new LoginPageCommand());
+        commands.put(Path.USER_PROFILE, new UserProfilePageCommand());
+
+        //admin pages
+        commands.put(Path.USER_LIST, new UserListPageCommand());
+        commands.put(Path.TOUR_LIST, new TourListPageCommand());
+        commands.put(Path.ADD_TOUR, new AddTourPageCommand());
+        commands.put(Path.EDIT_TOUR, new EditTourPageCommand());
+
+        //common
+        commands.put(Path.LOGIN_ACTION, new LoginCommand());
+        commands.put(Path.LOGOUT_ACTION, new LogoutCommand());
+
+        //admin
+        commands.put(Path.EDIT_TOUR_ACTION, new EditTourCommand());
+        commands.put(Path.ADD_TOUR_ACTION, new AddTourCommand());
+
     }
 
     public ICommand getCommand(HttpServletRequest request) {
-        String action = request.getParameter("action");
-        System.out.println(action);
-        return commands.get(action);
+        String path = request.getRequestURI();
+//        path = request.getMethod() + ':' + path;
+
+        System.out.println(path);
+        return commands.getOrDefault(path, (req,resp) -> Path.PAGE_ERROR_404);
+
+
+
+//        String action = request.getParameter("action");
+//        System.out.println(action);
+//        return commands.get(action);
     }
 }
