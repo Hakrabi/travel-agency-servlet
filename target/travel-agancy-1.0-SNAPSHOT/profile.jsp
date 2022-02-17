@@ -18,7 +18,7 @@
                 <div class="uk-width-1-1@m">
                     <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
                         <p><b>ID: </b>${sessionScope.user.id}</p>
-                        <p><b>Role: </b>${sessionScope.user.user_role_id}</p>
+                        <p><b>Role: </b>${sessionScope.user.userRoleId}</p>
                         <p><b>Login: </b>${sessionScope.user.login}</p>
                         <p><b>Name: </b>${sessionScope.user.name}</p>
                     </div>

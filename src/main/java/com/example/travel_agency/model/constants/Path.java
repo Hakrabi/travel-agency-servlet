@@ -1,4 +1,4 @@
-package com.example.travel_agency.controller;
+package com.example.travel_agency.model.constants;
 
 public class Path {
     public static final String PAGE_TOURS = "/tours.jsp";
@@ -15,9 +15,6 @@ public class Path {
     public static final String PAGE_LOGIN_FAILED = "/login.jsp?failed=true";
 
 
-    //admin pages
-
-    //errors
     public static final String APP = "/agency/api";
 
     //pages URL

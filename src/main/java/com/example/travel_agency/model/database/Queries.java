@@ -2,7 +2,7 @@ package com.example.travel_agency.model.database;
 
 public class Queries{
     public static class User {
-        public static final String INSERT       = "INSERT INTO user VALUES(default, ?, ?, md5(?), ?, false, default);";
+        public static final String INSERT       = "INSERT INTO user VALUES(default, ?, ?, ?, ?, false, default);";
         public static final String SELECT_ALL   = "SELECT * FROM user";
         public static final String SELECT_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
         public static final String DELETE       = "DELETE FROM users WHERE login = ?";

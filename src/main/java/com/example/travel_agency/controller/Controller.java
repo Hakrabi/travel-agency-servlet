@@ -2,8 +2,8 @@ package com.example.travel_agency.controller;
 
 import com.example.travel_agency.controller.command.CommandFactory;
 import com.example.travel_agency.controller.command.ICommand;
+import com.example.travel_agency.model.constants.Path;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

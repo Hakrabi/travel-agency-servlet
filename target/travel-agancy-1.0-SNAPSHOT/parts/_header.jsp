@@ -9,7 +9,7 @@
                 <a class="uk-navbar-item uk-logo" href="${pageContext.request.contextPath}">Tours</a>
 
                 <c:choose>
-                    <c:when test="${sessionScope.user.user_role_id == 1}">
+                    <c:when test="${sessionScope.user.userRoleId == 1}">
                         <ul class="uk-navbar-nav">
                             <li>
                                 <a href="#">Tables</a>

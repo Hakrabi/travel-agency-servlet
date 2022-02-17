@@ -1,9 +1,10 @@
 package com.example.travel_agency.controller.command.common;
 
-import com.example.travel_agency.controller.Path;
+import com.example.travel_agency.model.constants.Path;
 import com.example.travel_agency.controller.command.ICommand;
-import com.example.travel_agency.model.entity.User;
 import com.example.travel_agency.model.service.impl.AuthService;
+import com.example.travel_agency.model.validation.IValidator;
+import com.example.travel_agency.model.validation.LoginValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +14,18 @@ public class LoginCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        boolean successful = AuthService.getInstance().login(request);
-        String redirectTo;
+        IValidator validator = new LoginValidator();
 
-        System.out.println(successful);
-        if (successful) {
-            redirectTo = Path.HOME;
-        } else {
-            redirectTo = Path.LOGIN + "?error=true";
+        if (!validator.validate(request)) {
+
+            return Path.PAGE_LOGIN;
         }
 
-        return Path.REDIRECT + redirectTo;
+
+        if (!AuthService.getInstance().login(request)){
+            return Path.PAGE_LOGIN;
+        }
+
+        return Path.REDIRECT + Path.HOME;
     }
 }

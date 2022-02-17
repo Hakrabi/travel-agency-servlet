@@ -3,7 +3,6 @@ package com.example.travel_agency.model.database.dao.jdbc;
 import com.example.travel_agency.model.database.Queries;
 import com.example.travel_agency.model.database.QueryExecutor;
 import com.example.travel_agency.model.database.dao.IUserDao;
-import com.example.travel_agency.model.entity.Tour;
 import com.example.travel_agency.model.entity.User;
 import com.example.travel_agency.model.entity.builder.EntityBuilderFactory;
 
@@ -18,7 +17,7 @@ public class UserDao implements IUserDao {
 
         System.out.println(user.toString());
         id = QueryExecutor.insert(Queries.User.INSERT,
-                user.getUser_role_id(),
+                user.getUserRoleId(),
                 user.getLogin(),
                 user.getPassword(),
                 user.getName());

@@ -1,6 +1,6 @@
 package com.example.travel_agency.controller.command.common;
 
-import com.example.travel_agency.controller.Path;
+import com.example.travel_agency.model.constants.Path;
 import com.example.travel_agency.controller.command.ICommand;
 import com.example.travel_agency.model.database.dao.ITourDao;
 import com.example.travel_agency.model.database.dao.factory.IDaoFactory;
@@ -10,7 +10,6 @@ import com.example.travel_agency.model.entity.builder.EntityBuilderFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.parser.Entity;
 import java.io.IOException;
 import java.sql.SQLException;
 

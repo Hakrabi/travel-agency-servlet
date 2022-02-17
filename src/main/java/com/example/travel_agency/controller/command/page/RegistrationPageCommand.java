@@ -1,6 +1,6 @@
 package com.example.travel_agency.controller.command.page;
 
-import com.example.travel_agency.controller.Path;
+import com.example.travel_agency.model.constants.Path;
 import com.example.travel_agency.controller.command.ICommand;
 
 import javax.servlet.http.HttpServletRequest;

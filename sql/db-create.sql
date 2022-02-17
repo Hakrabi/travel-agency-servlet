@@ -191,9 +191,9 @@ INSERT INTO receipt_status VALUES(4, 'Executed');
 # INSERT INTO user VALUES(2, 'moderator','moderator@email.com', md5('moderator'), 'Holden',  default, 2);
 # INSERT INTO user VALUES(3, 'client','client@email.com', md5('client'), 'Elvis',  default, 3);
 
-INSERT INTO user VALUES(1, 1, 'admin@email.com', md5('admin'), 'Neo',false, default);
-INSERT INTO user VALUES(2, 2, 'moderator@email.com', md5('moderator'), 'Holden',false,  default);
-INSERT INTO user VALUES(3, 3, 'client@email.com', md5('client'), 'Elvis',false,  default);
+INSERT INTO user VALUES(1, 1, 'admin@email.com', 'Admin1234', 'Neo',false, default);
+INSERT INTO user VALUES(2, 2, 'moderator@email.com', 'Moderator1234', 'Holden',false,  default);
+INSERT INTO user VALUES(3, 3, 'client@email.com', 'Client1234', 'Elvis',false,  default);
 
 INSERT INTO tour VALUES(1,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, null);
 INSERT INTO tour VALUES(2,  'Mauritanian caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, null);

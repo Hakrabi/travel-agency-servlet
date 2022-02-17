@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <h3 class="uk-card-title uk-text-center">Welcome back!</h3>
 <form action="${pageContext.request.contextPath}/api/login-action" method="post">
@@ -20,4 +21,14 @@
     <div class="uk-text-small uk-text-center">
         Not registered? <a href="${pageContext.request.contextPath}/api/registration">Create an account</a>
     </div>
+
+    <c:choose>
+        <c:when test="${requestScope.error != null}">
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>${requestScope.error}</p>
+            </div>
+        </c:when>
+    </c:choose>
+
 </form>

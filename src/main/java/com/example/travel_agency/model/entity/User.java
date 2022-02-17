@@ -6,12 +6,11 @@ public class User extends Entity{
     private String login;
     private String password;
     private String name;
-    private Date create_time;
-    private Short user_role_id;
+    private Date createTime;
+    private Short userRoleId;
+    private Boolean blocked;
 
     public User(){}
-
-
 
     public String getLogin() {
         return login;
@@ -37,20 +36,28 @@ public class User extends Entity{
         this.name = name;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Short getUser_role_id() {
-        return user_role_id;
+    public Short getUserRoleId() {
+        return userRoleId;
     }
 
-    public void setUser_role_id(Short user_role_id) {
-        this.user_role_id = user_role_id;
+    public void setUserRoleId(Short userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
+    public Boolean getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        this.blocked = blocked;
     }
 
     @Override
@@ -59,8 +66,10 @@ public class User extends Entity{
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", create_time=" + create_time +
-                ", user_role_id=" + user_role_id +
+                ", create_time=" + createTime +
+                ", user_role_id=" + userRoleId +
                 '}';
     }
+
+
 }

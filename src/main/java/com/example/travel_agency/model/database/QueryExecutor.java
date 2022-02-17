@@ -22,7 +22,6 @@ public class QueryExecutor {
             int i = 1;
             for (Object field : fields) {
                 stmt.setObject(i++, field);
-                System.out.println(field);
             }
 
             stmt.execute();
@@ -83,7 +82,7 @@ public class QueryExecutor {
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
-            Object entity = new Object();
+            Object entity = null;
 
             int i = 1;
             for (Object field : fields) {
@@ -94,6 +93,11 @@ public class QueryExecutor {
             if (rs.next()) {
                 entity = builder.build(rs);
             }
+
+//            if(entity == null){
+//                return null;
+//            }
+
 
             return (R) entity;
         } catch (SQLException throwables) {

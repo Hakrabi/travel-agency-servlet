@@ -1,10 +1,8 @@
 package com.example.travel_agency.model.entity.builder;
 
-import com.example.travel_agency.model.entity.Tour;
 import com.example.travel_agency.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,11 +12,12 @@ public class UserBuilder implements IEntityBuilder<User>{
         User user = new User();
 
         user.setId(rs.getLong("id"));
-        user.setUser_role_id(rs.getShort("user_role_id"));
+        user.setUserRoleId(rs.getShort("user_role_id"));
         user.setLogin(rs.getString("login"));
         user.setPassword(rs.getString("password"));
         user.setName(rs.getString("name"));
-        user.setCreate_time(rs.getDate("create_time"));
+        user.setBlocked(rs.getBoolean("block"));
+        user.setCreateTime(rs.getDate("create_time"));
 
         return user;
     }

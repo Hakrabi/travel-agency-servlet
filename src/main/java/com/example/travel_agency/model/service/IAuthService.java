@@ -7,5 +7,5 @@ import javax.servlet.http.HttpServletRequest;
 public interface IAuthService {
     boolean login(HttpServletRequest request);
     void logout(HttpServletRequest request);
-    boolean register(User user);
+    boolean register(HttpServletRequest request);
 }
