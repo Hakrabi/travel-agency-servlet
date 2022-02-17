@@ -22,6 +22,7 @@ public class QueryExecutor {
             int i = 1;
             for (Object field : fields) {
                 stmt.setObject(i++, field);
+                System.out.println(field);
             }
 
             stmt.execute();

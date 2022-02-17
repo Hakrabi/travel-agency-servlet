@@ -27,10 +27,10 @@
             <c:forEach items="${tourList}" var="tour" varStatus="status">
                 <tr>
                     <td>${tour.id}</td>
-                    <td><a href="${pageContext.request.contextPath}/tour?id=${tour.id}">${tour.name}</a></td>
+                    <td><a href="${pageContext.request.contextPath}/api/tour?id=${tour.id}">${tour.name}</a></td>
                     <td>
                         <a  class="uk-button uk-button-default"
-                            href="${pageContext.request.contextPath}/edit-tour?id=${tour.id}">
+                            href="${pageContext.request.contextPath}/api/edit-tour?id=${tour.id}">
                             Edit Tour
                         </a>
                     </td>

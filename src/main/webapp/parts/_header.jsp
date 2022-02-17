@@ -15,9 +15,9 @@
                                 <a href="#">Tables</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="${pageContext.request.contextPath}/user-list">User List</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/tour-list">Tour List</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/user-list">Receipt List</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/api/user-list">User List</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/api/tour-list">Tour List</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/api/user-list">Receipt List</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -26,7 +26,7 @@
                                 <a href="#">Create</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="${pageContext.request.contextPath}/add-tour">Tour</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/api/add-tour">Tour</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -43,12 +43,12 @@
                 <c:choose>
                     <c:when test="${sessionScope.user == null}">
                         <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-login">Sign In</button>
-                        <a class="uk-button uk-button-default uk-margin-small-right" href="${pageContext.request.contextPath}/registration">Sign Up</a>
+                        <a class="uk-button uk-button-default uk-margin-small-right" href="${pageContext.request.contextPath}/api/registration">Sign Up</a>
                     </c:when>
                     <c:otherwise>
                         <div class="uk-margin-medium-right">Hi, ${sessionScope.user.name}</div>
-                        <a class="uk-button uk-button-default uk-margin-small-right" href="${pageContext.request.contextPath}/profile">Profile</a>
-                        <form action="${pageContext.request.contextPath}/logout-action" method="post">
+                        <a class="uk-button uk-button-default uk-margin-small-right" href="${pageContext.request.contextPath}/api/profile">Profile</a>
+                        <form action="${pageContext.request.contextPath}/api/logout-action" method="post">
                             <button class="uk-button uk-button-default uk-margin-small-right" type="submit">Logout</button>
                         </form>
                     </c:otherwise>

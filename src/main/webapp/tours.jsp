@@ -16,7 +16,7 @@
         <jsp:include page="/parts/_pagination.jsp"/>
 
 
-        <div class="uk-child-width-1-3@m uk-margin" uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 500">
+        <div class="uk-child-width-1-3@m uk-margin" uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200">
 
             <c:forEach items="${tourList}" var="tour" varStatus="status">
                 <c:set var="tour" value="${tour}" scope="request"/>

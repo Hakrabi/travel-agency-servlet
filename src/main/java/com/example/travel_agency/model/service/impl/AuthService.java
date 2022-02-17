@@ -53,8 +53,8 @@ public class AuthService implements IAuthService {
         IDaoFactory factory = new JdbcDaoFactory();
         IUserDao userDao = factory.getUserDao();
 
+        System.out.println(login);
         User user = userDao.read(login);
-        System.out.println(user.getPassword());
         if (user.getLogin() == null || password.equals(user.getPassword())) {
 //            errorMessage = "Cannot find user with such login or password";
 //            request.setAttribute("errorMessage", errorMessage);
@@ -87,8 +87,11 @@ public class AuthService implements IAuthService {
 
     @Override
     public boolean register(User user) {
-//        user.setPassword(PasswordEncoder.encodePassword(user.getPassword()));
-        user.setUser_role_id((short) 1);
+        user.setUser_role_id((short) 3);
+
+        IDaoFactory factory = new JdbcDaoFactory();
+        IUserDao userDao = factory.getUserDao();
+
         try {
             userDao.create(user);
             return true;

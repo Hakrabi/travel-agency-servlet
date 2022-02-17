@@ -14,7 +14,17 @@ public class UserDao implements IUserDao {
 
     @Override
     public Long create(User user) {
-        return null;
+        Long id = null;
+
+        System.out.println(user.toString());
+        id = QueryExecutor.insert(Queries.User.INSERT,
+                user.getUser_role_id(),
+                user.getLogin(),
+                user.getPassword(),
+                user.getName());
+
+
+        return id;
     }
 
     @Override

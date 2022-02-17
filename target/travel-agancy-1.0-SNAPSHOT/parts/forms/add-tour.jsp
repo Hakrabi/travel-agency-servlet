@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <h3 class="uk-card-title uk-text-center">Add Tour</h3>
-<form action="${pageContext.request.contextPath}/add-tour-action" method="post">
+<form action="${pageContext.request.contextPath}/api/add-tour-action" method="post">
 
     <div class="uk-margin">
         <input class="uk-input uk-form-large" type="text" placeholder="Name" name="name">

@@ -1,10 +1,7 @@
 package com.example.travel_agency.controller.command;
 
 import com.example.travel_agency.controller.Path;
-import com.example.travel_agency.controller.command.common.AddTourCommand;
-import com.example.travel_agency.controller.command.common.EditTourCommand;
-import com.example.travel_agency.controller.command.common.LoginCommand;
-import com.example.travel_agency.controller.command.common.LogoutCommand;
+import com.example.travel_agency.controller.command.common.*;
 import com.example.travel_agency.controller.command.page.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +39,7 @@ public class CommandFactory {
 
         //common
         commands.put(Path.LOGIN_ACTION, new LoginCommand());
+        commands.put(Path.REGISTRATION_ACTION, new RegistrationCommand());
         commands.put(Path.LOGOUT_ACTION, new LogoutCommand());
 
         //admin
@@ -52,9 +50,14 @@ public class CommandFactory {
 
     public ICommand getCommand(HttpServletRequest request) {
         String path = request.getRequestURI();
+//        String path = request.getPathInfo();
 //        path = request.getMethod() + ':' + path;
 
-        System.out.println(path);
+//        System.out.println(path);
+//        System.out.println(request.getRequestURI());
+//        System.out.println(request.getServletPath());
+//        System.out.println(request.getContextPath());
+
 //        return commands.get(path);
         return commands.getOrDefault(path, (req,resp) -> Path.PAGE_ERROR_404);
     }

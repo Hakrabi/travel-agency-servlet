@@ -18,28 +18,27 @@ public class Path {
     //admin pages
 
     //errors
+    public static final String APP = "/agency/api";
 
     //pages URL
-    public static final String HOME = "/agency/";
-    public static final String LOGIN = "/agency/login";
-    public static final String REGISTRATION = "/agency/registration";
-    public static final String TOUR_LIST = "/agency/tour-list";
-    public static final String USER_LIST = "/agency/user-list";
-    public static final String SINGLE_TOUR = "/agency/tour";
-    public static final String ADD_TOUR = "/agency/add-tour";
-    public static final String EDIT_TOUR = "/agency/edit-tour";
-    public static final String USER_PROFILE = "/agency/profile";
+    public static final String HOME          = APP +  "/";
+    public static final String LOGIN         = APP +  "/login";
+    public static final String REGISTRATION  = APP +  "/registration";
+    public static final String TOUR_LIST     = APP +  "/tour-list";
+    public static final String USER_LIST     = APP +  "/user-list";
+    public static final String SINGLE_TOUR   = APP +  "/tour";
+    public static final String ADD_TOUR      = APP +  "/add-tour";
+    public static final String EDIT_TOUR     = APP +  "/edit-tour";
+    public static final String USER_PROFILE  = APP +  "/profile";
 
     //action URL
 
-    public static final String LOGIN_ACTION = "/agency/login-action";
-    public static final String LOGOUT_ACTION = "/agency/logout-action";
-    public static final String ADD_TOUR_ACTION = "/agency/add-tour-action";
-    public static final String EDIT_TOUR_ACTION = "/agency/edit-tour-action";
+    public static final String LOGIN_ACTION         = APP + "/login-action";
+    public static final String REGISTRATION_ACTION  = APP + "/registration-action";
+    public static final String LOGOUT_ACTION        = APP + "/logout-action";
+    public static final String ADD_TOUR_ACTION      = APP + "/add-tour-action";
+    public static final String EDIT_TOUR_ACTION     = APP + "/edit-tour-action";
 
-
-//    public static final String COMMAND_TOURS = "/controller?action=tours";
-//    public static final String COMMAND_ = "/controller?action=singleTour";
 
     public static final String REDIRECT = "redirect";
 }

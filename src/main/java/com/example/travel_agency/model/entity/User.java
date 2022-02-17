@@ -52,4 +52,15 @@ public class User extends Entity{
     public void setUser_role_id(Short user_role_id) {
         this.user_role_id = user_role_id;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", create_time=" + create_time +
+                ", user_role_id=" + user_role_id +
+                '}';
+    }
 }

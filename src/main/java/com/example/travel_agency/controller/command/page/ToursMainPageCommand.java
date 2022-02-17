@@ -22,23 +22,17 @@ public class ToursMainPageCommand implements ICommand {
         if (!(paramPage == null))
             page = Integer.parseInt(paramPage);
 
-        int limit = 6;
+        int pageSize = 6;
 
-        List<Tour> tourList = tourDao.findAllByPage(page, limit);
+        List<Tour> tourList = tourDao.findAllByPage(pageSize * (page - 1), pageSize);
         int size = tourDao.getSize();
 
         int shift = 0;
-        int minPagePossible = page - shift < 1 ? 1 : page - shift;
-
-        int pageCount = (int)Math.ceil(size / limit);
-        int maxPagePossible = page + shift > pageCount ? pageCount : page + shift;
+        int pageCount = (int)Math.ceil(size / pageSize);
 
         request.setAttribute("tourList", tourList);
         request.setAttribute("pageCount", pageCount);
         request.setAttribute("page", page);
-//        request.setAttribute("pageSize", pageSize);
-        request.setAttribute("minPossiblePage", minPagePossible);
-        request.setAttribute("maxPossiblePage", maxPagePossible);
 
         return Path.PAGE_TOURS;
     }

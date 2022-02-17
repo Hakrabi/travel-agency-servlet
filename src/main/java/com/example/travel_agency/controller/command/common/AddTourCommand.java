@@ -24,6 +24,6 @@ public class AddTourCommand implements ICommand {
 
         Long id = tourDao.create(tour);
 
-        return Path.REDIRECT + Path.SINGLE_TOUR  + "?tourId=" + id;
+        return Path.REDIRECT + Path.SINGLE_TOUR  + "?id=" + id;
     }
 }

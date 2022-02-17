@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <h3 class="uk-card-title uk-text-center">Welcome back!</h3>
-<form action="${pageContext.request.contextPath}/login-action" method="post">
+<form action="${pageContext.request.contextPath}/api/login-action" method="post">
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
@@ -18,6 +18,6 @@
         <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Sign In</button>
     </div>
     <div class="uk-text-small uk-text-center">
-        Not registered? <a href="${pageContext.request.contextPath}/registration">Create an account</a>
+        Not registered? <a href="${pageContext.request.contextPath}/api/registration">Create an account</a>
     </div>
 </form>

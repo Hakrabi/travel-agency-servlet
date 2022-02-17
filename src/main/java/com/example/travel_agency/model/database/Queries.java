@@ -2,7 +2,7 @@ package com.example.travel_agency.model.database;
 
 public class Queries{
     public static class User {
-        public static final String INSERT       = "INSERT INTO user (login) VALUES(?)";
+        public static final String INSERT       = "INSERT INTO user VALUES(default, ?, ?, md5(?), ?, false, default);";
         public static final String SELECT_ALL   = "SELECT * FROM user";
         public static final String SELECT_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
         public static final String DELETE       = "DELETE FROM users WHERE login = ?";
@@ -10,7 +10,7 @@ public class Queries{
     }
 
     public static class Tour {
-        public static final String INSERT       = "INSERT INTO tour VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, default);";
+        public static final String INSERT       = "INSERT INTO tour VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, default, default, null);";
         public static final String SELECT_ALL   = "SELECT * FROM tour ORDER BY hot DESC";
         public static final String SELECT_BY_ID = "SELECT * FROM tour WHERE id = ?";
         public static final String SELECT_ALL_BY_PAGE = "SELECT * FROM tour ORDER BY hot DESC LIMIT ? OFFSET ?";
