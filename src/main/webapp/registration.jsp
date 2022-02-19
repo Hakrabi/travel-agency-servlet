@@ -8,10 +8,9 @@
 
 <body>
 
-<%--<jsp:include page="/parts/_header.jsp"/>--%>
+<jsp:include page="/parts/_header.jsp"/>
 
-<body>
-<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="expand: true">
     <div class="uk-width-1-1">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>

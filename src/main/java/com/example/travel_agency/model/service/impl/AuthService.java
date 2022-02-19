@@ -73,7 +73,7 @@ public class AuthService implements IAuthService {
     @Override
     public boolean register(HttpServletRequest request) {
 
-        String login = request.getParameter("login");
+        String login = request.getParameter("login").toLowerCase().trim();
 
         if(userDao.read(login) != null) {
             request.setAttribute(Errors.ERROR_ATTRIBUTE, Errors.Registration.LOGIN_EXISTS);

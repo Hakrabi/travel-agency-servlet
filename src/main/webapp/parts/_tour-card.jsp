@@ -11,7 +11,7 @@
         <div class="uk-card-media-top">
 
             <c:if test="${requestScope.tour.hot}">
-                <div class="uk-card-badge uk-label">Палаючий</div>
+                <div class="uk-card-badge uk-label" style="background-color: #ff4e00;">Hot</div>
             </c:if>
 
             <div class="uk-cover-container">
@@ -45,7 +45,19 @@
             </div>
 
             <div class="uk-card-footer uk-card-small">
-                <a href="#" class="uk-button uk-button-text">Book now</a>
+
+                <c:choose>
+                    <c:when test="${user == null}">
+                        <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-login">Book now</button>
+                    </c:when>
+                    <c:otherwise>
+                        <form action="${pageContext.request.contextPath}/api/add-receipt-action" method="post">
+                            <input type="hidden" name="tourId" value="${requestScope.tour.id}">
+                            <button class="uk-button uk-button-default" type="submit">Book now</button>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
 
         </div>

@@ -15,20 +15,25 @@ public class UserDao implements IUserDao {
     public Long create(User user) {
         Long id = null;
 
-        System.out.println(user.toString());
         id = QueryExecutor.insert(Queries.User.INSERT,
                 user.getUserRoleId(),
                 user.getLogin(),
                 user.getPassword(),
                 user.getName());
 
-
         return id;
     }
 
     @Override
     public User read(Long id) {
-        return null;
+        User user = null;
+        try {
+            user = QueryExecutor.getObject(Queries.User.SELECT_BY_ID, EntityBuilderFactory.getUserBuilder(), id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return user;
     }
 
     @Override
@@ -41,6 +46,14 @@ public class UserDao implements IUserDao {
         }
 
         return user;
+    }
+
+    @Override
+    public void changeUserBlock(Long id, Boolean block) {
+        User user = read(id);
+        if (user.getUserRoleId() != 1){
+            QueryExecutor.update(Queries.User.CHANGE_BLOCK, block, id);
+        }
     }
 
     @Override

@@ -34,6 +34,7 @@ public class CommandFactory {
         //admin pages
         commands.put(Path.USER_LIST, new UserListPageCommand());
         commands.put(Path.TOUR_LIST, new TourListPageCommand());
+        commands.put(Path.RECEIPT_LIST, new ReceiptListPageCommand());
         commands.put(Path.ADD_TOUR, new AddTourPageCommand());
         commands.put(Path.EDIT_TOUR, new EditTourPageCommand());
 
@@ -41,8 +42,10 @@ public class CommandFactory {
         commands.put(Path.LOGIN_ACTION, new LoginCommand());
         commands.put(Path.REGISTRATION_ACTION, new RegistrationCommand());
         commands.put(Path.LOGOUT_ACTION, new LogoutCommand());
+        commands.put(Path.ADD_RECEIPT_ACTION, new AddReceiptCommand());
 
         //admin
+        commands.put(Path.BLOCK_USER, new BlockUserCommand());
         commands.put(Path.EDIT_TOUR_ACTION, new EditTourCommand());
         commands.put(Path.ADD_TOUR_ACTION, new AddTourCommand());
 

@@ -21,18 +21,35 @@
                 <th>Role</th>
                 <th>Login</th>
                 <th>Name</th>
-                <th>Table Heading</th>
+                <th>Create Time</th>
+                <th>Block User</th>
             </tr>
             </thead>
             <tbody>
 
-            <c:forEach items="${userList}" var="user" varStatus="status">
+            <c:forEach items="${userList}" var="receipt" varStatus="status">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.user_role_id}</td>
-                    <td>${user.login}</td>
-                    <td>${user.name}</td>
-                    <td><button class="uk-button uk-button-default" type="button">Block</button></td>
+                    <td>${receipt.id}</td>
+                    <td>${receipt.userRoleId}</td>
+                    <td>${receipt.login}</td>
+                    <td>${receipt.name}</td>
+                    <td>${receipt.createTime}</td>
+                    <td>
+                        <c:if test = "${receipt.userRoleId != 1}">
+                            <form action="${pageContext.request.contextPath}/api/block-user-action" method="post">
+                                <input type="hidden" name="id" value="${receipt.id}">
+                                <input type="hidden" name="block" value="${!receipt.blocked}">
+                                <c:choose>
+                                    <c:when test="${receipt.blocked}">
+                                        <button class="uk-button uk-button-default" type="submit">Unblock</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="uk-button uk-button-default" type="submit">Block</button>
+                                    </c:otherwise>
+                                </c:choose>
+                            </form>
+                        </c:if>
+                    </td>
                 </tr>
             </c:forEach>
 

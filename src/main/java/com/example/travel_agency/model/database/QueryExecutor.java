@@ -42,6 +42,29 @@ public class QueryExecutor {
 
     }
 
+    public static int update(String updQuery, Object... fields) {
+        Connection con = Connector.getInstance().getConnection();
+
+        if (con == null)
+            return 0;
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(updQuery);
+
+            int i = 1;
+            for (Object field : fields) {
+                stmt.setObject(i++, field);
+            }
+
+            return stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return 0;
+        } finally {
+            Connector.getInstance().closeConnection(con);
+        }
+    }
+
 
     public static <R extends Entity> List<R> getObjects(String query, IEntityBuilder<R> builder, Object... fields) throws SQLException {
         Connection con = Connector.getInstance().getConnection();

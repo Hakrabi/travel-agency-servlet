@@ -9,4 +9,8 @@ public class EntityBuilderFactory {
     public static UserBuilder getUserBuilder() {
         return new UserBuilder();
     }
+
+    public static ReceiptBuilder getReceiptBuilder() {
+        return new ReceiptBuilder();
+    }
 }

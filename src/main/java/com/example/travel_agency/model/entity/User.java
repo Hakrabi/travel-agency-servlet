@@ -1,16 +1,14 @@
 package com.example.travel_agency.model.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class User extends Entity{
     private String login;
     private String password;
     private String name;
-    private Date createTime;
+    private Timestamp createTime;
     private Short userRoleId;
     private Boolean blocked;
-
-    public User(){}
 
     public String getLogin() {
         return login;
@@ -36,11 +34,11 @@ public class User extends Entity{
         this.name = name;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 

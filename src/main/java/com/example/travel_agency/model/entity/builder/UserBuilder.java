@@ -17,7 +17,7 @@ public class UserBuilder implements IEntityBuilder<User>{
         user.setPassword(rs.getString("password"));
         user.setName(rs.getString("name"));
         user.setBlocked(rs.getBoolean("block"));
-        user.setCreateTime(rs.getDate("create_time"));
+        user.setCreateTime(rs.getTimestamp("create_time"));
 
         return user;
     }

@@ -12,7 +12,7 @@
         </c:otherwise>
     </c:choose>
 
-    <c:forEach var="p" begin="1" end="${pageCount+1}">
+    <c:forEach var="p" begin="1" end="${pageCount}">
         <c:choose>
             <c:when test="${page == p}">
                 <li class="uk-active"><span>${p}</span></li>

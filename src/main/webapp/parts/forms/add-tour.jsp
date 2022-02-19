@@ -53,6 +53,22 @@
         </div>
     </div>
 
+    <div class="uk-margin">
+        <input class="uk-range" type="range" value="2" min="0" max="5" step="1">
+    </div>
+
+    <div class="uk-margin">
+        <div class="uk-form-controls uk-form-controls-text">
+            <label><input class="uk-radio" type="radio" name="radio1"> Option 01</label><br>
+            <label><input class="uk-radio" type="radio" name="radio1"> Option 02</label><br>
+            <label><input class="uk-radio" type="radio" name="radio1"> Option 02</label>
+        </div>
+    <div class="uk-margin">
+
+        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+            <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+        </div>
+
     <div class="uk-margin uk-align-center">
         <div uk-form-custom >
             <input type="file" name="img">
