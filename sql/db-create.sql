@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `travel_agency`.`tour`
     `name`          VARCHAR(45) NOT NULL,
     `description`   VARCHAR(45) NULL,
     `price`         INT         NOT NULL,
-    `person_count`  INT         NOT NULL,
+    `persons`  INT         NOT NULL,
     `tour_type_id`  INT         NOT NULL,
     `hotel_type_id` INT         NOT NULL,
     `hot`           TINYINT     NOT NULL,
@@ -202,3 +202,10 @@ INSERT INTO tour VALUES(4,  'NY shopping trip', 'Shop at the best stores', 3000.
 INSERT INTO tour VALUES(5,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, null);
 INSERT INTO tour VALUES(6,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, null);
 
+
+INSERT INTO tour VALUES(7,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, null);
+INSERT INTO tour VALUES(8,  'Mauritanian Caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, null);
+INSERT INTO tour VALUES(9,  'Bali Relax', 'Chill out on a tropical island', 900.00, 10, 2, 4, true, 'bali.jpg', default, default, null);
+INSERT INTO tour VALUES(10,  'NY shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default, default, null);
+INSERT INTO tour VALUES(11,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, null);
+INSERT INTO tour VALUES(12,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, null);

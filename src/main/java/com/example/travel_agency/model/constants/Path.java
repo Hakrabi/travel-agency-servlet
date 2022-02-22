@@ -32,13 +32,14 @@ public class Path {
 
     //action URL
 
-    public static final String LOGIN_ACTION         = APP + "/login-action";
-    public static final String REGISTRATION_ACTION  = APP + "/registration-action";
-    public static final String LOGOUT_ACTION        = APP + "/logout-action";
-    public static final String BLOCK_USER           = APP + "/block-user-action";
-    public static final String ADD_RECEIPT_ACTION   = APP + "/add-receipt-action";
-    public static final String ADD_TOUR_ACTION      = APP + "/add-tour-action";
-    public static final String EDIT_TOUR_ACTION     = APP + "/edit-tour-action";
+    public static final String LOGIN_ACTION                 = APP + "/login-action";
+    public static final String REGISTRATION_ACTION          = APP + "/registration-action";
+    public static final String LOGOUT_ACTION                = APP + "/logout-action";
+    public static final String BLOCK_USER                   = APP + "/block-user-action";
+    public static final String ADD_RECEIPT_ACTION           = APP + "/add-receipt-action";
+    public static final String EDIT_RECEIPT_STATUS_ACTION   = APP + "/edit-receipt-status-action";
+    public static final String ADD_TOUR_ACTION              = APP + "/add-tour-action";
+    public static final String EDIT_TOUR_ACTION             = APP + "/edit-tour-action";
 
 
     public static final String REDIRECT = "redirect";

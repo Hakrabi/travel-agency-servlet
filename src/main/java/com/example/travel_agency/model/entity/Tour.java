@@ -1,6 +1,5 @@
 package com.example.travel_agency.model.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class Tour extends Entity{
@@ -8,8 +7,8 @@ public class Tour extends Entity{
     private String description;
     private BigDecimal price;
     private Short persons;
-    private Short tour_type_id;
-    private Short hotel_type_id;
+    private Short tourTypeId;
+    private Short hotelTypeId;
     private Boolean hot;
     private String imgUrl;
 
@@ -41,12 +40,12 @@ public class Tour extends Entity{
         return imgUrl;
     }
 
-    public Short getTour_type_id() {
-        return tour_type_id;
+    public Short getTourTypeId() {
+        return tourTypeId;
     }
 
-    public Short getHotel_type_id() {
-        return hotel_type_id;
+    public Short getHotelTypeId() {
+        return hotelTypeId;
     }
 
 
@@ -66,12 +65,12 @@ public class Tour extends Entity{
         this.persons = persons;
     }
 
-    public void setTour_type_id(Short tour_type_id) {
-        this.tour_type_id = tour_type_id;
+    public void setTourTypeId(Short tourTypeId) {
+        this.tourTypeId = tourTypeId;
     }
 
-    public void setHotel_type_id(Short hotel_type_id) {
-        this.hotel_type_id = hotel_type_id;
+    public void setHotelTypeId(Short hotelTypeId) {
+        this.hotelTypeId = hotelTypeId;
     }
 
     public void setHot(Boolean hot) {

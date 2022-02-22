@@ -2,26 +2,34 @@ package com.example.travel_agency.controller.dto;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class TourDto {
+public class TourDto implements IDto{
+    private String id;
     private String name;
     private String description;
     private String price;
     private String persons;
-    private String tour_type_id;
-    private String hotel_type_id;
+    private String tourTypeId;
+    private String hotelTypeId;
     private String hot;
     private String imgUrl;
 
     public TourDto(HttpServletRequest request) {
+        id          = request.getParameter("id");
+        name          = request.getParameter("name");
+        description   = request.getParameter("description");
+        price         = request.getParameter("price");
+        persons       = request.getParameter("persons");
+        tourTypeId    = request.getParameter("tour_type");
+        hotelTypeId   = request.getParameter("hotel_type");
+        imgUrl        = request.getParameter("img_url");
+        hot           = request.getParameter("hot");
+        if (hot == null){
+            hot = "false";
+        }
+    }
 
-         name          = request.getParameter("name");
-         description   = request.getParameter("description");
-         price         = request.getParameter("price");
-         persons       = request.getParameter("persons");
-         tour_type_id  = request.getParameter("tour_type");
-         hotel_type_id = request.getParameter("hotel_type");
-         hot           = request.getParameter("hot");
-         imgUrl        = request.getParameter("img_url");
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -40,12 +48,12 @@ public class TourDto {
         return persons;
     }
 
-    public String getTour_type_id() {
-        return tour_type_id;
+    public String getTourTypeId() {
+        return tourTypeId;
     }
 
-    public String getHotel_type_id() {
-        return hotel_type_id;
+    public String getHotelTypeId() {
+        return hotelTypeId;
     }
 
     public String getHot() {

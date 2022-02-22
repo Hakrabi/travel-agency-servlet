@@ -26,7 +26,7 @@
                 <div class="uk-grid-small uk-flex-between" uk-grid>
                     <div class="uk-width-auto">
                         <h3 class="uk-card-title uk-margin-remove-bottom">${requestScope.tour.name}</h3>
-                        <p class="uk-text-meta uk-margin-remove-top">${requestScope.tour.tour_type_id}</p>
+                        <p class="uk-text-meta uk-margin-remove-top">${requestScope.tour.tourTypeId}</p>
                     </div>
                     <div class="uk-width-auto">
                         <h3><b>$${requestScope.tour.price}</b></h3>
@@ -37,7 +37,7 @@
             <div class="uk-card-body uk-card-small">
                 <p>${requestScope.tour.description}</p>
                 <p class="uk-margin-small"><b>Hotel: </b>
-                    <c:forEach var = "i" begin = "1" end = "${requestScope.tour.hotel_type_id}">
+                    <c:forEach var = "i" begin = "1" end = "${requestScope.tour.hotelTypeId}">
                         ★
                     </c:forEach>
                     </p>

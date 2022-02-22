@@ -16,6 +16,16 @@ public class Errors {
         public static final String EMAIL_NOT_VALID = "emailNotValid";
         public static final String PASSWORD_NOT_VALID = "passwordNotValid";
         public static final String NAME_NOT_VALID = "nameNotValid";
-        public static final Object LOGIN_EXISTS = "loginExists";
+        public static final String LOGIN_EXISTS = "loginExists";
+    }
+
+    public static class Tour{
+        public static final String NAME_NOT_VALID = "nameNotValid";
+        public static final String DESC_NOT_VALID = "descNotValid";
+        public static final String PRICE_NOT_VALID = "priceNotValid";
+        public static final String PERSONS_NOT_VALID = "personsNotValid";
+        public static final String TOUR_TYPE_NOT_VALID = "tourTypeNotValid";
+        public static final String HOTEL_NOT_VALID = "hotelNotValid";
+        public static final String HOT_NOT_VALID = "hotNotValid";
     }
 }

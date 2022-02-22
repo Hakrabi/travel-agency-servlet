@@ -1,8 +1,15 @@
 package com.example.travel_agency.controller.command;
 
+import com.example.travel_agency.controller.command.get.*;
+import com.example.travel_agency.controller.command.post.admin.AddTourCommand;
+import com.example.travel_agency.controller.command.post.admin.BlockUserCommand;
+import com.example.travel_agency.controller.command.post.admin.EditTourCommand;
+import com.example.travel_agency.controller.command.post.common.AddReceiptCommand;
+import com.example.travel_agency.controller.command.post.common.LoginCommand;
+import com.example.travel_agency.controller.command.post.common.LogoutCommand;
+import com.example.travel_agency.controller.command.post.common.RegistrationCommand;
+import com.example.travel_agency.controller.command.post.moderator.EditReceiptStatusCommand;
 import com.example.travel_agency.model.constants.Path;
-import com.example.travel_agency.controller.command.common.*;
-import com.example.travel_agency.controller.command.page.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -48,6 +55,7 @@ public class CommandFactory {
         commands.put(Path.BLOCK_USER, new BlockUserCommand());
         commands.put(Path.EDIT_TOUR_ACTION, new EditTourCommand());
         commands.put(Path.ADD_TOUR_ACTION, new AddTourCommand());
+        commands.put(Path.EDIT_RECEIPT_STATUS_ACTION, new EditReceiptStatusCommand());
 
     }
 

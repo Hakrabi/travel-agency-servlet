@@ -13,7 +13,9 @@
 <section id="tours" class="uk-padding">
     <div class="uk-container ">
 
-        <div class="uk-child-width-1-3@m uk-margin" uk-grid uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200">
+        <jsp:include page="/parts/_order_tours.jsp"/>
+
+        <div class="uk-child-width-1-3@m uk-margin" uk-grid>
 
             <c:forEach items="${tourList}" var="tour" varStatus="status">
                 <c:set var="tour" value="${tour}" scope="request"/>

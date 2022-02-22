@@ -1,5 +1,9 @@
 package com.example.travel_agency.model.database.connection;
 
+import com.example.travel_agency.model.constants.Logs;
+import com.example.travel_agency.model.exception.AppException;
+import org.apache.log4j.Logger;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -13,6 +17,7 @@ public class Connector {
     }
 
     private static Connector instance = null;
+    private static Logger logger = Logger.getLogger(Connector.class);
 
     public static Connector getInstance(){
         if (instance==null)
@@ -29,10 +34,9 @@ public class Connector {
             DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/pool");
             connection  = dataSource.getConnection();
 
-        } catch (NamingException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (NamingException | SQLException e) {
+            logger.fatal(Logs.Connection.CONNECTION_FAILED, e);
+            throw new AppException("Connection error", e);
         }
 
         return connection;
@@ -42,7 +46,8 @@ public class Connector {
         try {
             conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.fatal(Logs.Connection.CLOSING_FAILED, e);
+            throw new AppException("Connection error", e);
         }
     }
 

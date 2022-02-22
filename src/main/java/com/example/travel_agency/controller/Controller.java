@@ -29,6 +29,8 @@ public class Controller extends HttpServlet {
         CommandFactory commandFactory = CommandFactory.commandFactory();
         ICommand command = commandFactory.getCommand(req);
 
+        req.getSession().removeAttribute("error");
+
         String page = null;
         try {
             page = command.execute(req, resp);
@@ -42,6 +44,7 @@ public class Controller extends HttpServlet {
 //        return command.execute(req);
 
         req.setAttribute("origRequestURL", req.getRequestURL());
+
 
         if (page.startsWith(Path.REDIRECT)) {
             resp.sendRedirect(page.replaceAll(Path.REDIRECT, ""));

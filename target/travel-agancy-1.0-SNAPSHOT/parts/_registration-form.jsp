@@ -31,10 +31,10 @@
     </div>
 
     <c:choose>
-        <c:when test="${requestScope.error != null}">
+        <c:when test="${sessionScope.error != null}">
             <div class="uk-alert-danger" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
-                <p>${requestScope.error}</p>
+                <p>${sessionScope.error}</p>
             </div>
         </c:when>
     </c:choose>

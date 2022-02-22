@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <h3 class="uk-card-title uk-text-center">Edit Tour</h3>
 <form action="${pageContext.request.contextPath}/api/edit-tour-action" method="POST">
+    <input type="hidden" value="${tour.id}" name="id">
 
     <div class="uk-margin">
         <input class="uk-input uk-form-large" type="text" placeholder="Name" name="name" value="${tour.name}">
@@ -22,35 +24,36 @@
     </div>
 
     <div class="uk-margin">
-        <div class="uk-grid">
-            <div class="uk-width-1-2@s" uk-form-custom="target: > * > span:first-child">
-                <select name="tour_type">
-                    <option value="">Tour Type</option>
-                    <option value="1">Excursion</option>
-                    <option value="2">Vacation</option>
-                    <option value="3">Shopping</option>
-                </select>
-                <button class="uk-button uk-button-medium" type="button" tabindex="-1">
-                    <span></span>
-                    <span uk-icon="icon: chevron-down"></span>
-                </button>
+        <div class="uk-grid" uk-grid>
+            <div class="uk-width-auto@m">
+                <label class="uk-form-label" for="hotel_type">Hotel</label>
             </div>
-
-            <div class="uk-width-1-2@s" uk-form-custom="target: > * > span:first-child">
-                <select name="hotel_type">
-                    <option value="">Hotel Type</option>
-                    <option value="1">★</option>
-                    <option value="2">★★</option>
-                    <option value="3">★★★</option>
-                    <option value="4">★★★★</option>
-                    <option value="5">★★★★★</option>
-                </select>
-                <button class="uk-button uk-button-medium" type="button" tabindex="-1">
-                    <span></span>
-                    <span uk-icon="icon: chevron-down"></span>
-                </button>
+            <div class="uk-width-expand@m">
+                <input id="hotel_type" class="uk-range" type="range" value="${tour.hotelTypeId}" min="1" max="5" step="1" name="hotel_type">
+                <div class="uk-flex uk-flex-between">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+        <label><input class="uk-radio" type="radio" name="tour_type" value="1"
+                      <c:if test="${tour.tourTypeId == 1}">checked</c:if>> Excursion</label>
+        <label><input class="uk-radio" type="radio" name="tour_type" value="2"
+                      <c:if test="${tour.tourTypeId == 2}">checked</c:if>> Vacation</label>
+        <label><input class="uk-radio" type="radio" name="tour_type" value="3"
+                      <c:if test="${tour.tourTypeId == 3}">checked</c:if>> Shopping</label>
+    </div>
+
+    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+
+        <label><input class="uk-checkbox" type="checkbox" name="hot" value="true"
+                      <c:if test="${tour.hot}">checked</c:if>> Hot</label>
     </div>
 
     <div class="uk-margin uk-align-center">

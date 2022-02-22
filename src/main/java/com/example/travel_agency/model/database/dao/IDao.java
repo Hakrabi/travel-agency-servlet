@@ -1,17 +1,15 @@
 package com.example.travel_agency.model.database.dao;
 
-import java.io.Serializable;
+import com.example.travel_agency.model.entity.Entity;
+import com.example.travel_agency.model.entity.mapper.IEntityMapper;
+
 import java.util.List;
 
-public interface IDao<T, PK extends Serializable> {
-    PK create(T t);
-    T read(PK id);
-    void update(T t);
-    void delete(PK id);
-    List<T> findAll();
+public interface IDao {
 
-    List<T> findAllByPage(Integer page, Integer limit);
-    Integer getSize();
-
-
+    Long insert(String query, Object... fields);
+    int update(String updQuery, Object... fields);
+    <R extends Entity, D> List<R> getObjects(String query, IEntityMapper<R, D> builder, Object... fields);
+    <R extends Entity, D> R getObject(String query, IEntityMapper<R, D> builder, Object... fields);
+    Integer getSize(String query);
 }

@@ -1039,7 +1039,7 @@ SELECT|sys.sys_config
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="315" parent="285" name="person_count">
+    <column id="315" parent="285" name="persons">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
