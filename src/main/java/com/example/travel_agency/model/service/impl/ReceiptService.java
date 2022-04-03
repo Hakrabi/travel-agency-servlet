@@ -1,24 +1,35 @@
 package com.example.travel_agency.model.service.impl;
 
-import com.example.travel_agency.model.database.Queries;
+import com.example.travel_agency.model.constant.Logs;
+import com.example.travel_agency.model.database.Query;
 import com.example.travel_agency.model.database.dao.jdbcDao;
-import com.example.travel_agency.model.entity.User;
-import com.example.travel_agency.model.service.IReceiptService;
 import com.example.travel_agency.model.entity.Receipt;
 import com.example.travel_agency.model.entity.mapper.EntityMapperFactory;
+import com.example.travel_agency.model.exception.AppException;
+import com.example.travel_agency.model.service.IReceiptService;
+import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ReceiptService implements IReceiptService {
+
+    private static Logger logger = Logger.getLogger(ReceiptService.class);
+
     @Override
     public Long create(Receipt receipt) {
-        Long id = null;
+        Long id;
 
-        id = jdbcDao.insert(Queries.Receipt.INSERT,
-                receipt.getUserId(),
-                receipt.getTourId());
+        try {
+            id = jdbcDao.insert(Query.Receipt.INSERT,
+                    receipt.getUserId(),
+                    receipt.getTourId());
 
+            logger.info(Logs.ReceiptService.CREATE_SUCCESS + id);
+
+        } catch (Exception e) {
+            logger.error(Logs.ReceiptService.CREATE_FAILED, e);
+            throw new AppException(Logs.ReceiptService.CREATE_FAILED, e);
+        }
 
         return id;
     }
@@ -33,8 +44,15 @@ public class ReceiptService implements IReceiptService {
     }
 
     @Override
-    public void changeReceiptStatus(Long tourId, Long statusId) {
-        jdbcDao.update(Queries.Receipt.UPDATE_STATUS, statusId, tourId);
+    public void changeReceiptStatus(Long receiptId, Long statusId) {
+        try {
+            jdbcDao.update(Query.Receipt.UPDATE_STATUS, statusId, receiptId);
+
+            logger.info(Logs.ReceiptService.CHANGE_STATUS_SUCCESS + receiptId);
+        } catch (Exception e) {
+            logger.error(Logs.ReceiptService.CHANGE_STATUS_FAILED, e);
+            throw new AppException(Logs.ReceiptService.CHANGE_STATUS_FAILED, e);
+        }
     }
 
     @Override
@@ -44,34 +62,29 @@ public class ReceiptService implements IReceiptService {
 
     @Override
     public List<Receipt> findAll() {
-        List<Receipt> receiptList = null;
+        List<Receipt> receiptList;
+
         try {
-            receiptList = jdbcDao.getObjects(Queries.Receipt.SELECT_ALL, EntityMapperFactory.getReceiptMapper());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            receiptList = jdbcDao.getObjects(Query.Receipt.SELECT_ALL, EntityMapperFactory.getReceiptMapper());
+        } catch (Exception e) {
+            logger.error(Logs.ReceiptService.FIND_ALL_FAILED, e);
+            throw new AppException(Logs.ReceiptService.FIND_ALL_FAILED, e);
         }
 
         return receiptList;
     }
 
     public List<Receipt> findAllByUser(Long userId) {
-        List<Receipt> receiptList = null;
+        List<Receipt> receiptList;
+
         try {
-            receiptList = jdbcDao.getObjects(Queries.Receipt.SELECT_ALL_BY_USER, EntityMapperFactory.getReceiptMapper(), userId);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            receiptList = jdbcDao.getObjects(Query.Receipt.SELECT_ALL_BY_USER, EntityMapperFactory.getReceiptMapper(), userId);
+        } catch (Exception e) {
+            logger.error(Logs.ReceiptService.FIND_ALL_BY_USER_FAILED, e);
+            throw new AppException(Logs.ReceiptService.FIND_ALL_BY_USER_FAILED, e);
         }
 
         return receiptList;
     }
 
-    @Override
-    public List<Receipt> findAllByPage(Integer page, Integer limit) {
-        return null;
-    }
-
-    @Override
-    public Integer getSize() {
-        return null;
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.travel_agency.model.entity;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Receipt extends Entity{
@@ -7,7 +8,8 @@ public class Receipt extends Entity{
     private Long tourId;
     private Long userId;
     private Timestamp createTime;
-
+    private BigDecimal price;
+    private BigDecimal discount;
 
     public Long getReceiptStatusId() {
         return receiptStatusId;
@@ -40,4 +42,13 @@ public class Receipt extends Entity{
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
 }

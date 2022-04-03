@@ -9,10 +9,11 @@
     <div class="uk-margin">
         <textarea class="uk-textarea uk-form-large"  placeholder="Description" name="description"></textarea>
     </div>
+
     <div class="uk-margin">
         <div class="uk-grid">
             <div class="uk-width-1-2@s">
-                <input class="uk-input uk-form-large" type="text" placeholder="Price" name="price" >
+                <input class="uk-input uk-form-large" type="number" min="1" placeholder="Price" name="price" >
             </div>
             <div class="uk-width-1-2@s">
                 <input  class="uk-input uk-form-large" type="number" placeholder="Persons" id="persons" name="persons"
@@ -45,6 +46,19 @@
         <label><input class="uk-radio" type="radio" name="tour_type" value="3"> Shopping</label>
     </div>
 
+    <div class="uk-margin">
+        <div class="uk-grid">
+            <div class="uk-width-1-2@s">
+                <input class="uk-input uk-form-large" type="text" placeholder="Discount limit" name="discount_limit"
+                       min="1" max="100">
+            </div>
+            <div class="uk-width-1-2@s">
+                <input  class="uk-input uk-form-large" type="number" placeholder="Discount step" name="discount_step"
+                        min="1" max="10">
+            </div>
+        </div>
+    </div>
+
     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
         <label><input class="uk-checkbox" type="checkbox" name="hot" value="true"> Hot</label>
     </div>
@@ -60,5 +74,15 @@
     <div class="uk-margin-large-top">
         <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Add Tour</button>
     </div>
+
+
+    <c:choose>
+        <c:when test="${sessionScope.error != null}">
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>${sessionScope.error}</p>
+            </div>
+        </c:when>
+    </c:choose>
 
 </form>

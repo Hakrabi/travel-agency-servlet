@@ -1,7 +1,7 @@
 package com.example.travel_agency.model.validation;
 
 import com.example.travel_agency.controller.dto.UserDto;
-import com.example.travel_agency.model.constants.Errors;
+import com.example.travel_agency.model.constant.Errors;
 
 public class RegistrationValidator extends IValidator<UserDto> {
 
@@ -15,15 +15,15 @@ public class RegistrationValidator extends IValidator<UserDto> {
         String password = userDto.getPassword();
         String name     = userDto.getName();
 
-        if (login == null || !login.matches(emailPattern)){
+        if (login == null || login.length() > 45 || !login.matches(emailPattern)){
             errorMsg = Errors.Registration.EMAIL_NOT_VALID;
             return false;
         }
-        if (password == null || !password.matches(passwordPattern)){
+        if (password == null || password.length() > 32 || !password.matches(passwordPattern)){
             errorMsg =  Errors.Registration.PASSWORD_NOT_VALID;
             return false;
         }
-        if (name == null || !password.matches(namePattern)){
+        if (name == null || name.length() > 45 || !password.matches(namePattern)){
             errorMsg = Errors.Registration.NAME_NOT_VALID;
             return false;
         }

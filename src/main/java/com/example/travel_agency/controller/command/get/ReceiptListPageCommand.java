@@ -1,7 +1,7 @@
 package com.example.travel_agency.controller.command.get;
 
 import com.example.travel_agency.controller.command.ICommand;
-import com.example.travel_agency.model.constants.Path;
+import com.example.travel_agency.model.constant.Path;
 import com.example.travel_agency.model.entity.Receipt;
 import com.example.travel_agency.model.service.impl.ReceiptService;
 

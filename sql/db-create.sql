@@ -50,18 +50,19 @@ DROP TABLE IF EXISTS `travel_agency`.`tour`;
 
 CREATE TABLE IF NOT EXISTS `travel_agency`.`tour`
 (
-    `id`            INT         NOT NULL AUTO_INCREMENT,
-    `name`          VARCHAR(45) NOT NULL,
-    `description`   VARCHAR(45) NULL,
-    `price`         INT         NOT NULL,
-    `persons`  INT         NOT NULL,
-    `tour_type_id`  INT         NOT NULL,
-    `hotel_type_id` INT         NOT NULL,
-    `hot`           TINYINT     NOT NULL,
-    `img_url`       VARCHAR(45) NULL,
-    `discount`      DECIMAL     NOT NULL DEFAULT 0,
-    `create_time`   TIMESTAMP   NULL     DEFAULT CURRENT_TIMESTAMP,
-    `edit_time`     TIMESTAMP   NULL     DEFAULT CURRENT_TIMESTAMP,
+    `id`             INT          NOT NULL AUTO_INCREMENT,
+    `name`           VARCHAR(20)  NOT NULL,
+    `description`    VARCHAR(200) NULL,
+    `price`          DECIMAL      NOT NULL DEFAULT 0,
+    `persons`   INT          NOT NULL,
+    `tour_type_id`   INT          NOT NULL,
+    `hotel_type_id`  INT          NOT NULL,
+    `hot`            TINYINT      NOT NULL,
+    `img_url`        VARCHAR(45)  NULL,
+    `discount_limit` DECIMAL      NOT NULL DEFAULT 0,
+    `discount_step`  DECIMAL      NOT NULL DEFAULT 0,
+    `create_time`    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `edit_time`      TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     INDEX `fk_tour_tour_type_idx` (`tour_type_id` ASC) VISIBLE,
     INDEX `fk_tour_hotel_type1_idx` (`hotel_type_id` ASC) VISIBLE,
@@ -140,10 +141,12 @@ DROP TABLE IF EXISTS `travel_agency`.`receipt`;
 CREATE TABLE IF NOT EXISTS `travel_agency`.`receipt`
 (
     `id`                INT       NOT NULL AUTO_INCREMENT,
-    `receipt_status_id` INT       NOT NULL DEFAULT 1,
-    `user_id`           INT       NOT NULL,
+    `receipt_status_id` INT       NOT NULL,
     `tour_id`           INT       NOT NULL,
-    `create_time`       TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    `user_id`           INT       NOT NULL,
+    `create_time`       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `price`             DECIMAL   NOT NULL,
+    `discount`          DECIMAL   NOT NULL DEFAULT 0,
     PRIMARY KEY (`id`),
     INDEX `fk_receipt_receipt_status1_idx` (`receipt_status_id` ASC) VISIBLE,
     INDEX `fk_receipt_tour1_idx` (`tour_id` ASC) VISIBLE,
@@ -172,8 +175,9 @@ SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
 
 
 
+
 INSERT INTO user_role VALUES(1, 'admin');
-INSERT INTO user_role VALUES(2, 'moderator');
+INSERT INTO user_role VALUES(2, 'manager');
 INSERT INTO user_role VALUES(3, 'client');
 
 INSERT INTO tour_type VALUES(1, 'Excursion');
@@ -195,17 +199,17 @@ INSERT INTO user VALUES(1, 1, 'admin@email.com', 'Admin1234', 'Neo',false, defau
 INSERT INTO user VALUES(2, 2, 'moderator@email.com', 'Moderator1234', 'Holden',false,  default);
 INSERT INTO user VALUES(3, 3, 'client@email.com', 'Client1234', 'Elvis',false,  default);
 
-INSERT INTO tour VALUES(1,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, null);
-INSERT INTO tour VALUES(2,  'Mauritanian Caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, null);
-INSERT INTO tour VALUES(3,  'Bali Relax', 'Chill out on a tropical island', 900.00, 10, 2, 4, true, 'bali.jpg', default, default, null);
-INSERT INTO tour VALUES(4,  'NY shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default, default, null);
-INSERT INTO tour VALUES(5,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, null);
-INSERT INTO tour VALUES(6,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, null);
+INSERT INTO tour VALUES(1,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, default, null);
+INSERT INTO tour VALUES(2,  'Mauritanian Caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, default, null);
+INSERT INTO tour VALUES(3,  'Bali Relax', 'Chill out on a tropical island', 900.00, 10, 2, 4, true, 'bali.jpg', default, default, default, null);
+INSERT INTO tour VALUES(4,  'NY shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default, default, default, null);
+INSERT INTO tour VALUES(5,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, default, null);
+INSERT INTO tour VALUES(6,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, default, null);
 
 
-INSERT INTO tour VALUES(7,  'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, null);
-INSERT INTO tour VALUES(8,  'Mauritanian Caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, null);
-INSERT INTO tour VALUES(9,  'Bali Relax', 'Chill out on a tropical island', 900.00, 10, 2, 4, true, 'bali.jpg', default, default, null);
-INSERT INTO tour VALUES(10,  'NY shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default, default, null);
-INSERT INTO tour VALUES(11,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, null);
-INSERT INTO tour VALUES(12,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, null);
+# INSERT INTO tour VALUES(7,   'Irish Castle Tour', 'Explore Irish Castles', 300.00, 10, 1, 3, false, 'ireland.webp', default, default, default, null);
+# INSERT INTO tour VALUES(8,   'Mauritanian Caravan', 'Become a part of desert caravan', 700.00, 5, 1, 1, true, 'caravan.jpg', default, default, default, null);
+# INSERT INTO tour VALUES(9,   'Bali Relax', 'Chill out on a tropical island', 900.00, 10, 2, 4, true, 'bali.jpg', default, default, default, null);
+# INSERT INTO tour VALUES(10,  'NY shopping trip', 'Shop at the best stores', 3000.00, 5, 3, 5, false, 'NY.jpg', default, default, default, null);
+# INSERT INTO tour VALUES(11,  'Delhi Artifacts', 'Find mystical things', 800.00, 15, 3, 3, true, 'delhi.jpg', default, default, default, null);
+# INSERT INTO tour VALUES(12,  'Austria Ski Resort', 'Holidays in the mountains', 1000.00, 3, 2, 5, false, 'ski-resort.jpg', default, default, default, null);

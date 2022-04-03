@@ -1,7 +1,7 @@
 package com.example.travel_agency.controller.command.get;
 
 import com.example.travel_agency.controller.command.ICommand;
-import com.example.travel_agency.model.constants.Path;
+import com.example.travel_agency.model.constant.Path;
 import com.example.travel_agency.model.entity.Tour;
 import com.example.travel_agency.model.service.impl.TourService;
 
@@ -30,7 +30,6 @@ public class ToursMainPageCommand implements ICommand {
                                                                   paramSort, paramOrder, paramType);
 
         int size = tourService.getSizeSort(paramType);
-        System.out.println(size);
         int shift = 0;
         int pageCount = (int)Math.ceil(size / pageSize);
 

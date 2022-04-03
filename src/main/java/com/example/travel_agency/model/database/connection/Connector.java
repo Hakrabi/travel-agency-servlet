@@ -1,6 +1,6 @@
 package com.example.travel_agency.model.database.connection;
 
-import com.example.travel_agency.model.constants.Logs;
+import com.example.travel_agency.model.constant.Logs;
 import com.example.travel_agency.model.exception.AppException;
 import org.apache.log4j.Logger;
 
@@ -36,7 +36,7 @@ public class Connector {
 
         } catch (NamingException | SQLException e) {
             logger.fatal(Logs.Connection.CONNECTION_FAILED, e);
-            throw new AppException("Connection error", e);
+            System.exit(1);
         }
 
         return connection;
@@ -47,7 +47,7 @@ public class Connector {
             conn.close();
         } catch (SQLException e) {
             logger.fatal(Logs.Connection.CLOSING_FAILED, e);
-            throw new AppException("Connection error", e);
+            throw new AppException(Logs.Connection.CLOSING_FAILED, e);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.travel_agency.model.constants;
+package com.example.travel_agency.model.constant;
 
 public class Path {
     public static final String PAGE_TOURS = "/tours.jsp";
@@ -12,8 +12,7 @@ public class Path {
     public static final String PAGE_SINGLE_TOUR = "/single-tour.jsp";
     public static final String PAGE_USER_PROFILE = "/profile.jsp";
     public static final String PAGE_ERROR_404 = "/page404.jsp";
-
-    public static final String PAGE_LOGIN_FAILED = "/login.jsp?failed=true";
+    public static final String PAGE_ERROR_PAGE = "/error-page.jsp";
 
 
     public static final String APP = "/agency/api";
@@ -29,9 +28,9 @@ public class Path {
     public static final String ADD_TOUR      = APP +  "/add-tour";
     public static final String EDIT_TOUR     = APP +  "/edit-tour";
     public static final String USER_PROFILE  = APP +  "/profile";
+    public static final String ERROR_PAGE    = APP +  "/error-page";
 
     //action URL
-
     public static final String LOGIN_ACTION                 = APP + "/login-action";
     public static final String REGISTRATION_ACTION          = APP + "/registration-action";
     public static final String LOGOUT_ACTION                = APP + "/logout-action";
@@ -40,6 +39,7 @@ public class Path {
     public static final String EDIT_RECEIPT_STATUS_ACTION   = APP + "/edit-receipt-status-action";
     public static final String ADD_TOUR_ACTION              = APP + "/add-tour-action";
     public static final String EDIT_TOUR_ACTION             = APP + "/edit-tour-action";
+    public static final String DELETE_TOUR_ACTION           = APP + "/delete-tour-action";
 
 
     public static final String REDIRECT = "redirect";

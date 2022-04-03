@@ -2,54 +2,51 @@ package com.example.travel_agency.controller;
 
 import com.example.travel_agency.controller.command.CommandFactory;
 import com.example.travel_agency.controller.command.ICommand;
-import com.example.travel_agency.model.constants.Path;
+import com.example.travel_agency.model.constant.Path;
+import com.example.travel_agency.model.exception.AppException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 //@WebServlet("/")
 public class Controller extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        request.getSession().removeAttribute("error");
+        request.setAttribute("origRequestURL", request.getRequestURL());
 
         CommandFactory commandFactory = CommandFactory.commandFactory();
-        ICommand command = commandFactory.getCommand(req);
+        ICommand command = commandFactory.getCommand(request);
 
-        req.getSession().removeAttribute("error");
-
-        String page = null;
+        String page;
         try {
-            page = command.execute(req, resp);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            page = command.execute(request, response);
+        } catch (AppException e) {
+            page = Path.REDIRECT + Path.ERROR_PAGE;
+            request.getSession().setAttribute("error", e.getMessage());
+        } catch (Exception e) {
+            page = Path.REDIRECT + Path.ERROR_PAGE;
+            request.getSession().setAttribute("error", "Something wrong");
         }
 
-//        String path = req.getRequestURI();
-//        path = req.getMethod() + ':' + path;
-//        Command command = commands.getOrDefault(path, (r) -> Pages.ERROR_404_PAGE);
-//        return command.execute(req);
-
-        req.setAttribute("origRequestURL", req.getRequestURL());
-
-
         if (page.startsWith(Path.REDIRECT)) {
-            resp.sendRedirect(page.replaceAll(Path.REDIRECT, ""));
+            response.sendRedirect(page.replaceAll(Path.REDIRECT, ""));
         } else {
-            req.getRequestDispatcher(page).forward(req, resp);
+            request.getRequestDispatcher(page).forward(request, response);
         }
     }
 }

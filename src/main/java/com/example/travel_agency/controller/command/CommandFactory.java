@@ -3,13 +3,14 @@ package com.example.travel_agency.controller.command;
 import com.example.travel_agency.controller.command.get.*;
 import com.example.travel_agency.controller.command.post.admin.AddTourCommand;
 import com.example.travel_agency.controller.command.post.admin.BlockUserCommand;
+import com.example.travel_agency.controller.command.post.admin.DeleteTourCommand;
 import com.example.travel_agency.controller.command.post.admin.EditTourCommand;
 import com.example.travel_agency.controller.command.post.common.AddReceiptCommand;
 import com.example.travel_agency.controller.command.post.common.LoginCommand;
 import com.example.travel_agency.controller.command.post.common.LogoutCommand;
 import com.example.travel_agency.controller.command.post.common.RegistrationCommand;
-import com.example.travel_agency.controller.command.post.moderator.EditReceiptStatusCommand;
-import com.example.travel_agency.model.constants.Path;
+import com.example.travel_agency.controller.command.post.manager.EditReceiptStatusCommand;
+import com.example.travel_agency.model.constant.Path;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class CommandFactory {
         commands.put(Path.SINGLE_TOUR, new SingleTourPageCommand());
         commands.put(Path.LOGIN, new LoginPageCommand());
         commands.put(Path.USER_PROFILE, new UserProfilePageCommand());
+        commands.put(Path.ERROR_PAGE, new ErrorPageCommand());
 
         //admin pages
         commands.put(Path.USER_LIST, new UserListPageCommand());
@@ -55,6 +57,7 @@ public class CommandFactory {
         commands.put(Path.BLOCK_USER, new BlockUserCommand());
         commands.put(Path.EDIT_TOUR_ACTION, new EditTourCommand());
         commands.put(Path.ADD_TOUR_ACTION, new AddTourCommand());
+        commands.put(Path.DELETE_TOUR_ACTION, new DeleteTourCommand());
         commands.put(Path.EDIT_RECEIPT_STATUS_ACTION, new EditReceiptStatusCommand());
 
     }

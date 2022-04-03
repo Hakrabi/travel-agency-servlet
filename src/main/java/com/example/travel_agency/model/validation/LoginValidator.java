@@ -1,7 +1,7 @@
 package com.example.travel_agency.model.validation;
 
 import com.example.travel_agency.controller.dto.UserDto;
-import com.example.travel_agency.model.constants.Errors;
+import com.example.travel_agency.model.constant.Errors;
 
 public class LoginValidator extends IValidator<UserDto>{
 

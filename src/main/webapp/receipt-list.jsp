@@ -54,7 +54,7 @@
                         <div uk-dropdown>
                             <ul class="uk-nav uk-dropdown-nav">
                                 <form action="${pageContext.request.contextPath}/api/edit-receipt-status-action" method="post">
-                                    <input type="hidden" value="${receipt.id}" name="tourId">
+                                    <input type="hidden" value="${receipt.id}" name="receiptId">
                                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                         <label><input class="uk-radio" type="radio" name="statusId" value="1"
                                                       <c:if test="${receipt.receiptStatusId == 1}">checked</c:if>> Registered</label>

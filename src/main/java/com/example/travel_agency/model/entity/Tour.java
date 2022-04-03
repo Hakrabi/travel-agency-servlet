@@ -11,6 +11,8 @@ public class Tour extends Entity{
     private Short hotelTypeId;
     private Boolean hot;
     private String imgUrl;
+    private BigDecimal discountLimit;
+    private BigDecimal discountStep;
 
     public Tour() {
 
@@ -48,6 +50,14 @@ public class Tour extends Entity{
         return hotelTypeId;
     }
 
+    public BigDecimal getDiscountLimit() {
+        return discountLimit;
+    }
+
+    public BigDecimal getDiscountStep() {
+        return discountStep;
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -79,5 +89,13 @@ public class Tour extends Entity{
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public void setDiscountLimit(BigDecimal discountLimit) {
+        this.discountLimit = discountLimit;
+    }
+
+    public void setDiscountStep(BigDecimal discountStep) {
+        this.discountStep = discountStep;
     }
 }

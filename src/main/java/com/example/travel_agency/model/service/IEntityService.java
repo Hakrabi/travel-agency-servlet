@@ -1,17 +1,18 @@
 package com.example.travel_agency.model.service;
 
+import com.example.travel_agency.model.exception.AppException;
+
 import java.io.Serializable;
 import java.util.List;
 
 public interface IEntityService<T, PK extends Serializable> {
-    PK create(T t);
-    T read(PK id);
-    void update(T t);
-    void delete(PK id);
-    List<T> findAll();
+    PK create(T t) throws AppException;
+    T read(PK id) throws AppException;
+    void update(T t) throws AppException;
+    void delete(PK id) throws AppException;
+    List<T> findAll() throws AppException;
 
-    List<T> findAllByPage(Integer page, Integer limit);
-    Integer getSize();
+
 
 
 }

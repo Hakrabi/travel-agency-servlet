@@ -1,6 +1,7 @@
 package com.example.travel_agency.controller.dto;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 
 public class TourDto implements IDto{
     private String id;
@@ -12,6 +13,8 @@ public class TourDto implements IDto{
     private String hotelTypeId;
     private String hot;
     private String imgUrl;
+    private String discountLimit;
+    private String discountStep;
 
     public TourDto(HttpServletRequest request) {
         id          = request.getParameter("id");
@@ -23,8 +26,17 @@ public class TourDto implements IDto{
         hotelTypeId   = request.getParameter("hotel_type");
         imgUrl        = request.getParameter("img_url");
         hot           = request.getParameter("hot");
+        discountLimit = request.getParameter("discount_limit");
+        discountStep  = request.getParameter("discount_step");
+
         if (hot == null){
             hot = "false";
+        }
+        if (discountLimit == null){
+            discountLimit = "0";
+        }
+        if (discountStep == null){
+            discountStep = "0";
         }
     }
 
@@ -62,5 +74,13 @@ public class TourDto implements IDto{
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public String getDiscountLimit() {
+        return discountLimit;
+    }
+
+    public String getDiscountStep() {
+        return discountStep;
     }
 }

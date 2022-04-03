@@ -3,27 +3,27 @@ package com.example.travel_agency.model.database;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Queries{
+public class Query {
     public static class User {
-        public static final String INSERT       = "INSERT INTO user VALUES(default, ?, ?, ?, ?, false, default);";
-        public static final String SELECT_ALL   = "SELECT * FROM user";
+        public static final String INSERT          = "INSERT INTO user VALUES(default, ?, ?, ?, ?, false, default);";
+        public static final String SELECT_ALL      = "SELECT * FROM user";
         public static final String SELECT_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
-        public static final String SELECT_BY_ID = "SELECT * FROM user WHERE id = ?";
-        public static final String UPDATE_BLOCK = "UPDATE user SET block = ? WHERE id = ?";
+        public static final String SELECT_BY_ID    = "SELECT * FROM user WHERE id = ?";
+        public static final String UPDATE_BLOCK    = "UPDATE user SET block = ? WHERE id = ?";
     }
 
     public static class Tour {
-        public static final String INSERT       = "INSERT INTO tour VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, default, default, null);";
+        public static final String INSERT       = "INSERT INTO tour VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default, null);";
         public static final String SELECT_ALL   = "SELECT * FROM tour";
         public static final String SELECT_BY_ID = "SELECT * FROM tour WHERE id = ?";
-        public static final String SELECT_ALL_BY_PAGE = "SELECT * FROM tour ORDER BY hot DESC LIMIT ? OFFSET ?";
-        public static final String SIZE         = "SELECT COUNT(*) FROM tour";
+        public static final String DELETE       = "DELETE FROM tour WHERE id = ?";
         public static final String UPDATE       = "UPDATE tour SET name=?, description=?, price=?, persons=?, " +
-                                                  "tour_type_id=?, hotel_type_id=?, hot=?, img_url=? WHERE id=?";
+                                                  "tour_type_id=?, hotel_type_id=?, hot=?, img_url=?, discount_limit=?, " +
+                                                  "discount_step=? WHERE id=?";
 
         public static class Order{
             public static final String DESC = "DESC";
-            public static final String ASC = "ASC";
+            public static final String ASC  = "ASC";
 
             public static final String WHERE_TYPE_EXCURSION = "WHERE tour_type_id = 1";
             public static final String WHERE_TYPE_VACATION  = "WHERE tour_type_id = 2";
@@ -72,7 +72,7 @@ public class Queries{
     }
 
     public static class Receipt {
-        public static final String INSERT        = "INSERT INTO receipt VALUES(default, default, ?, ?, default)";
+        public static final String INSERT        = "INSERT INTO receipt VALUES(default, default, ?, ?, ?, ?, default)";
         public static final String SELECT_ALL    = "SELECT * FROM receipt";
         public static final String UPDATE_STATUS = "UPDATE receipt SET receipt_status_id = ? WHERE id = ?";
         public static final String SELECT_ALL_BY_USER    = "SELECT * FROM receipt WHERE user_id = ?";

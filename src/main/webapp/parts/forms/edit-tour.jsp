@@ -14,7 +14,7 @@
     <div class="uk-margin">
         <div class="uk-grid">
             <div class="uk-width-1-2@s">
-                <input class="uk-input uk-form-large" type="text" placeholder="Price" name="price" value="${tour.price}">
+                <input class="uk-input uk-form-large" type="number" min="1" placeholder="Price" name="price" value="${tour.price}">
             </div>
             <div class="uk-width-1-2@s">
                 <input  class="uk-input uk-form-large" type="number" placeholder="Persons" id="persons" name="persons"
@@ -50,11 +50,24 @@
                       <c:if test="${tour.tourTypeId == 3}">checked</c:if>> Shopping</label>
     </div>
 
-    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+    <div class="uk-margin">
+        <div class="uk-grid">
+            <div class="uk-width-1-2@s">
+                <input class="uk-input uk-form-large" type="text" placeholder="Discount limit" name="discount_limit"
+                       min="1" max="100" value="${tour.discountLimit}">
+            </div>
+            <div class="uk-width-1-2@s">
+                <input  class="uk-input uk-form-large" type="number" placeholder="Discount step" name="discount_step"
+                        min="1" max="10"  value="${tour.discountStep}">
+            </div>
+        </div>
+    </div>
 
+    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
         <label><input class="uk-checkbox" type="checkbox" name="hot" value="true"
                       <c:if test="${tour.hot}">checked</c:if>> Hot</label>
     </div>
+
 
     <div class="uk-margin uk-align-center">
         <div uk-form-custom >
@@ -63,9 +76,18 @@
         </div>
     </div>
 
-
     <div class="uk-margin-large-top">
         <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Edit Tour</button>
     </div>
+
+
+    <c:choose>
+        <c:when test="${sessionScope.error != null}">
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>${sessionScope.error}</p>
+            </div>
+        </c:when>
+    </c:choose>
 
 </form>

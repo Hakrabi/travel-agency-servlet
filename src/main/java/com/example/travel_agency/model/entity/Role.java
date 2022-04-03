@@ -1,8 +1,13 @@
 package com.example.travel_agency.model.entity;
 
 public enum Role {
-    ADMIN(1L);
+    ADMIN(1),
+    MODERATOR(2),
+    CLIENT(3);
 
-    Role(Long id) {
+    Long id;
+
+    Role(long id) {
+        this.id = id;
     }
 }

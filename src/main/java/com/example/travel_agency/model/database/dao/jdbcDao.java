@@ -10,11 +10,8 @@ import java.util.List;
 
 public class jdbcDao {
 
-    public static Long insert(String query, Object... fields){
+    public static Long insert(String query, Object... fields) throws Exception {
         Connection con = Connector.getInstance().getConnection();
-
-        if (con == null)
-            return null;
 
         try {
             PreparedStatement stmt = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -32,9 +29,6 @@ public class jdbcDao {
 
             return null;
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return null;
         }
         finally {
             Connector.getInstance().closeConnection(con);
@@ -42,14 +36,11 @@ public class jdbcDao {
 
     }
 
-    public static int update(String updQuery, Object... fields) {
+    public static int update(String query, Object... fields) throws Exception {
         Connection con = Connector.getInstance().getConnection();
 
-        if (con == null)
-            return 0;
-
         try {
-            PreparedStatement stmt = con.prepareStatement(updQuery);
+            PreparedStatement stmt = con.prepareStatement(query);
 
             int i = 1;
             for (Object field : fields) {
@@ -57,20 +48,28 @@ public class jdbcDao {
             }
 
             return stmt.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return 0;
+
+        } finally {
+            Connector.getInstance().closeConnection(con);
+        }
+    }
+
+    public static void delete(String query, Long id) throws Exception {
+        Connection con = Connector.getInstance().getConnection();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setObject(1, id);
+
+            stmt.execute();
         } finally {
             Connector.getInstance().closeConnection(con);
         }
     }
 
 
-    public static <R extends Entity, D> List<R> getObjects(String query, IEntityMapper<R, D> builder, Object... fields) throws SQLException {
+    public static <R extends Entity, D> List<R> getObjects(String query, IEntityMapper<R, D> builder, Object... fields) throws Exception {
         Connection con = Connector.getInstance().getConnection();
-
-        if (con == null)
-            return null;
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -88,20 +87,13 @@ public class jdbcDao {
 
             return entities;
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return null;
-
         } finally {
             Connector.getInstance().closeConnection(con);
         }
     }
 
-    public static <R extends Entity, D> R getObject(String query, IEntityMapper<R, D> builder, Object... fields) throws SQLException {
+    public static <R extends Entity, D> R getObject(String query, IEntityMapper<R, D> builder, Object... fields) throws Exception {
         Connection con = Connector.getInstance().getConnection();
-
-        if (con == null)
-            return null;
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -117,25 +109,14 @@ public class jdbcDao {
                 entity = builder.map(rs);
             }
 
-//            if(entity == null){
-//                return null;
-//            }
-
-
             return (R) entity;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return null;
         } finally {
             Connector.getInstance().closeConnection(con);
         }
     }
 
-    public static Integer getSize(String query) throws SQLException {
+    public static Integer getSize(String query) throws Exception {
         Connection con = Connector.getInstance().getConnection();
-
-        if (con == null)
-            return null;
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -148,7 +129,7 @@ public class jdbcDao {
             }
 
             return size;
-        } catch (SQLException throwables) {
+        } catch (Exception throwables) {
             throwables.printStackTrace();
             return null;
         } finally {

@@ -20,6 +20,7 @@
                 <th class="uk-width-small">ID</th>
                 <th>Name</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -33,6 +34,17 @@
                             href="${pageContext.request.contextPath}/api/edit-tour?id=${tour.id}">
                             Edit Tour
                         </a>
+                    </td>
+                    <td>
+                        <button class="uk-button uk-button-default" type="button">Delete Tour</button>
+                        <div uk-dropdown>
+                            <form action="${pageContext.request.contextPath}/api/delete-tour-action" method="post">
+                                <input type="hidden" value="${tour.id}" name="tourId">
+
+                                <button type="submit" class="uk-button uk-button-default uk-width-1-1" >Delete</button>
+                            </form>
+                        </div>
+
                     </td>
 
                 </tr>
